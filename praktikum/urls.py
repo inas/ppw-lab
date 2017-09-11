@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^lab-1/', include(lab_1,namespace='lab-1')),
     url(r'^lab-2/', include(lab_2,namespace='lab-2')),
     url(r'^lab-2-addon/', include(lab_2_addon,namespace='lab_2_addon')),
-    url(r'^$', RedirectView.as_view(pattern_name = 'lab-2:index'))
+    url(r'^$', RedirectView.as_view(url='lab-2/', permanent=True))
 ]
