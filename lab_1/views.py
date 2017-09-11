@@ -3,10 +3,10 @@ from datetime import datetime, date
 # Enter your name here
 mhs_name = 'Anisha Inas Izdihar' # TODO Implement this
 curr_year = int(datetime.now().strftime("%Y"))
-birth_date = (1999, May, 6) #TODO Implement this, format (Year, Month, Date)
+birth_date = 1999 #TODO Implement this, format (Year, Month, Date)
 # Create your views here.
 def index(request):
-    response = {'name': mhs_name, 'age': calculate_age(birth_date.year)}
+    response = {'name': mhs_name, 'age': calculate_age(birth_date)}
     return render(request, 'index_lab1.html', response)
 
 def calculate_age(birth_year):
