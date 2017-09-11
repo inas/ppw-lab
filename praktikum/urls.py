@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 import lab_1.urls as lab_1
 import lab_2.urls as lab_2
-import labppw2017.lab_2_addon.urls as lab_2_addon
+import lab_2_addon.urls as lab_2_addon
 from lab_1.views import index as index_lab1
 from django.views.generic import RedirectView
 
