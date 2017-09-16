@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from .views import index
+from .views import add_activity
 
 #url for app
 urlpatterns = [
