@@ -1,3 +1,5 @@
+[![coverage report](https://gitlab.com/anishainas/ppw-lab/badges/master/coverage.svg)](https://gitlab.com/anishainas/ppw-lab/commits/master)
+[![pipeline status](https://gitlab.com/anishainas/ppw-lab/badges/master/pipeline.svg)](https://gitlab.com/anishainas/ppw-lab/commits/master)
 # Lab 3: Pengenalan _Setting_ PostgreSQL di Heroku, pengenalan _models_ dan TDD
 
 CSGE602022 - Web Design & Programming (Perancangan & Pemrograman Web) @
