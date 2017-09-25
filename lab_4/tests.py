@@ -99,3 +99,9 @@ class Lab4UnitTest(TestCase):
 
         self.assertIn('Anonymous', html_response)
         self.assertIn(message_anonymous, html_response)
+
+        #@skip('Move this test case to lab_2_addon apps')
+    def test_root_url_now_is_using_index_page_from_lab_4(self):
+        response = Client().get('/')
+        self.assertEqual(response.status_code, 301)
+        self.assertRedirects(response,'/lab-4/',301,200)

@@ -6,7 +6,7 @@ from .models import Message
 
 # Create your views here.
 response = {'author': "Anisha Inas Izdihar"} #TODO Implement yourname
-about_me = 'six words to describe myself hm'
+about_me = ['six', 'words', 'to', 'describe', 'myself','hm']
 def index(request):
     response['content'] = landing_page_content
     html = 'lab_4/lab_4.html'

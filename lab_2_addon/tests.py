@@ -14,12 +14,6 @@ class Lab2AddonUnitTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     #@skip('Move this test case to lab_2_addon apps')
-    def test_root_url_now_is_using_index_page_from_lab_2(self):
-        response = Client().get('/')
-        self.assertEqual(response.status_code, 301)
-        self.assertRedirects(response,'/lab-2/',301,200)
-
-    #@skip('Move this test case to lab_2_addon apps')
     def test_lab2_addon_using_index_func(self):
         found = resolve('/lab-2-addon/')
         self.assertEqual(found.func, index)
