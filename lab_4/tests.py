@@ -105,3 +105,10 @@ class Lab4UnitTest(TestCase):
         response = Client().get('/')
         self.assertEqual(response.status_code, 301)
         self.assertRedirects(response,'/lab-4/',301,200)
+
+    def test_lab_4_str_is_equal_to_message(self):
+        name = mhs_name
+        email = 'anishainas@gmail.com'
+        message = 'lets see hmmmmmmmmmmm'
+        test_message = Message.objects.create(name=name, email=email, message=message)
+        self.assertEqual(str(test_message), message)

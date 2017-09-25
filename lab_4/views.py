@@ -26,7 +26,8 @@ def message_post(request):
         message.save()
         html ='lab_4/form_result.html'
         return render(request, html, response)
-    else:        
+    else:
+        #alert("What are you trying to say?")  
         return HttpResponseRedirect('/lab-4/')
 
 def message_table(request):
