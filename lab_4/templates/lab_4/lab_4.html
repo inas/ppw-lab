@@ -1,31 +1,69 @@
 {% extends "lab_4/layout/base.html" %}
 
 {% block content %}
-<h1>Portofolio</h1>
+<head>
+    <style type="text/css">
+
+        .row{
+            width: auto;
+            height: auto;
+        }
+        #biography {
+            font-size: 20px;
+            font-family: "Courier New";
+            padding-top: 45px;
+            padding-right: 80px;
+            padding-left: 10px;
+        }
+        .img-circle{
+            float: right;
+        }
+        .col-md-2{
+            font-style: italic;
+            font-size: 20px;
+            font-family: "Courier New";
+            text-align: center;
+            padding-top: 40px;
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+
+<h1 style="font-family: 'Palatino Linotype'; text-align: center;">Rowena Ravenclaw</h1>
 <hr/>
-<section name="bio">
-    <h2>Bio</h2>
-    <p>
-        {{content}}
-    </p>    
-</section>
-<hr/>
+<div class="row">
+  <div class="col-md-4">
+    <section name="bio">
+        <img src="https://68.media.tumblr.com/62b3258e1bfd0e8b35bb6bbeb27dbe6b/tumblr_owu4rs92Go1uc54vmo1_1280.png" class="img-circle" alt="Cinque Terre" width="250" height="250"> 
+  
+    </section>
+  </div>
+  <div class="col-md-8"; id="biography">
+        <p>
+            {{content}}
+        </p>  
+  </div>
+</div>
+
 <section name="about_me">
-    <h2>List</h2>
     <ul>
         {% for ii in about_me %}
-        <li> {{ ii }} </li>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-default">{{ ii }}</button>
+            
+        </div>
         {% endfor %}
     </ul>
 </section>
+
 <hr/>
-<section name="form">
-    <h2>Send Message</h2>
-    <form id="form" method="POST" action="{% url 'lab-4:add_message' %}">
+<section name="form" style="padding-top: 230px; padding-bottom: 50px">
+    <h2 style="font-family: 'Palatino Linotype'; text-align: center;">Send Message</h2>
+    <form id="form" method="POST" action="{% url 'lab-4:add_message' %}" style="font-family: 'Courier New'; font-size: 17px">
         {% csrf_token %}
         {{ message_form }}
         <br>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default btn-lg" style="font-family: 'Palatino Linotype'; font-size: 17px">Submit</button>
     </form>
 </section>
 
