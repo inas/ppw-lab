@@ -34,12 +34,12 @@ class Lab4UnitTest(TestCase):
             self.assertIn(item,html_response)      
 
     def test_model_can_create_new_message(self):
-        #Creating a new activity
         new_activity = Message.objects.create(name=mhs_name,email='test@gmail.com',message='This is a test')
 
         #Retrieving all available activity
         counting_all_available_message= Message.objects.all().count()
         self.assertEqual(counting_all_available_message,1)
+
 
     def test_form_message_input_has_placeholder_and_css_classes(self):
         form = Message_Form()
