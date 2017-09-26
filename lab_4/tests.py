@@ -112,3 +112,10 @@ class Lab4UnitTest(TestCase):
         message = 'lets see hmmmmmmmmmmm'
         test_message = Message.objects.create(name=name, email=email, message=message)
         self.assertEqual(str(test_message), message)
+
+    def test_lab_4_navbar_and_copyright_exists(self):
+        request = HttpRequest()
+        response = index(request)
+        html_response = response.content.decode('utf8')
+        self.assertIn('navbar navbar-default navbar-static-top', html_response)
+        self.assertIn('&copy;', html_response)
