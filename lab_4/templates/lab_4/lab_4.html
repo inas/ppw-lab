@@ -34,7 +34,7 @@
 <div class="row">
   <div class="col-md-4">
     <section name="bio">
-        <img src="https://68.media.tumblr.com/62b3258e1bfd0e8b35bb6bbeb27dbe6b/tumblr_owu4rs92Go1uc54vmo1_1280.png" class="img-circle" alt="Cinque Terre" width="250" height="250"> 
+        <img src="https://68.media.tumblr.com/62b3258e1bfd0 e8b35bb6bbeb27dbe6b/tumblr_owu4rs92Go1uc54vmo1_1280.png" class="img-circle" alt="Cinque Terre" width="250" height="250"> 
   
     </section>
   </div>
@@ -59,7 +59,7 @@
 <hr/>
 <section name="form" style="padding-top: 230px; padding-bottom: 120px">
     <h2 style="font-family: 'Palatino Linotype'; text-align: center;">Send Message</h2>
-    <form id="form" method="POST" action="{% url 'lab-4:add_message' %}" style="font-family: 'Courier New'; font-size: 17px">
+    <form id ="form" method="POST" action="{% url 'lab-4:add_message' %}" style="font-family: 'Courier New'; font-size: 17px">
         {% csrf_token %}
         {{ message_form }}
         <br>

@@ -5,6 +5,7 @@ import pytz
 class Message(models.Model):
 	def convertTZ():
 		return timezone.now() + timezone.timedelta(hours=7)
+		
 	name = models.CharField(max_length=27)
 	email = models.EmailField()
 	message = models.TextField()
