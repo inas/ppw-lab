@@ -1,10 +1,11 @@
-body{
-  margin-top: 70px;
-}
 
+body { 
+  padding: 0px 0 0 0;
+}
 /* Custom navbar style */
 .navbar-static-top {
-  margin-bottom: 19px;
+  margin-bottom: 0px;
+  top: 0px;
 }
 .navbar-default .navbar-nav>li>a {
     cursor: pointer;
@@ -86,13 +87,22 @@ footer p{
   #input-list form {
       width: 290px;
   }
+
 }
+
+@media screen and (max-width: 427px){
+  #form {
+    width: auto;
+  }
+}
+
 
 #input-list{
   background: linear-gradient(to bottom right, #606062, #393939);
 }
 #input-list form{
-  width: 400px;
+  width: auto;
+  max-width: 400px;
   margin: 50px auto;
   text-align: center;
   position: relative;
@@ -159,15 +169,15 @@ footer p{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   align-content: center;
   margin-right: -15px;
   margin-left: -15px;
 }
 .flex-item{
-  width: auto;
-  padding: 0 15px;
+  width: 100%;
+  padding: 0 calc(100% * (1/8));
   flex-grow: 0;
   flex-shrink: 0;
 }
@@ -179,6 +189,16 @@ footer p{
   flex-grow: 0;
   flex-shrink: 0;
   }
+}
+
+.to-do-list:hover .to-do-list-delete{
+  display: block;
+  box-shadow: 0 8px 8px 0 gray, 0 8px 20px 0 gray;
+}
+
+.to-do-list:hover{
+  box-shadow: 0 8px 8px 0 gray, 0 8px 20px 0 gray;
+  top: -10px;
 }
 
 .to-do-list .to-do-list-title {
@@ -220,4 +240,12 @@ footer p{
 }
 .to-do-list .to-do-list-delete {
   bottom: -50px;
+}
+.to-do-list-delete{
+  display: none;
+}
+.to-do-list {
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
 }
