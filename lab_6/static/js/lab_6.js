@@ -1,13 +1,11 @@
  //chat box
- var head = document.getElementById('arrow');
- var body = document.getElementById('chat-body-id');
  var text = document.getElementById('chat-text');
  var chat = document.getElementById('msg-insert-id');
  var send = true;
 
 $('textarea').keyup(function(e) {
   console.log(e);
-  if(e.keyCode === 13) {
+  if(e.keyCode == 13) {
     if (send){
       $(".msg-insert").append('<div class = "msg-send">'+ text.value + '</div>')
       send = false;
@@ -19,6 +17,14 @@ $('textarea').keyup(function(e) {
     text.value = "";
   }
 });
+
+//Chat-box
+$(document).ready(function(){
+    $(".chat-head").click(function(){
+        $(".chat-body").toggle();
+    });
+});
+
 
 // Calculator
 var print = document.getElementById('print');

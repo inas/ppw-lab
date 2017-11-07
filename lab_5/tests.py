@@ -34,22 +34,22 @@ class Lab5FunctionalTest(TestCase):
         self.selenium.quit()
         super(Lab5FunctionalTest, self).tearDown()
 
-    # def test_input_todo(self):
-    #     selenium = self.selenium
-    #     # Opening the link we want to test
-    #     selenium.get('http://127.0.0.1:8000/lab-5/')
-    #     # find the form element
-    #     title = selenium.find_element_by_id('id_title')
-    #     description = selenium.find_element_by_id('id_description')
+    def test_input_todo(self):
+        selenium = self.selenium
+        # Opening the link we want to test
+        selenium.get('http://127.0.0.1:8000/lab-5/')
+        # find the form element
+        title = selenium.find_element_by_id('id_title')
+        description = selenium.find_element_by_id('id_description')
 
-    #     submit = selenium.find_element_by_id('submit')
+        submit = selenium.find_element_by_id('submit')
 
-    #     # Fill the form with data
-    #     title.send_keys('Mengerjakan Lab PPW')
-    #     description.send_keys('Lab kali ini membahas tentang CSS dengan penggunaan Selenium untuk Test nya')
+        # Fill the form with data
+        title.send_keys('Mengerjakan Lab PPW')
+        description.send_keys('Lab kali ini membahas tentang CSS dengan penggunaan Selenium untuk Test nya')
 
-    #     # submitting the form
-    #     submit.send_keys(Keys.RETURN)
+        # submitting the form
+        submit.send_keys(Keys.RETURN)
 
 # Create your tests here.
 class Lab5UnitTest(TestCase):
