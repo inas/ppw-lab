@@ -1,0 +1,204 @@
+<link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"/>
+  <style type="text/css">
+
+  .navbar {
+    width: auto;
+    height: 2em;
+  }
+
+  nav p{
+  
+    font-family: 'Karla', sans-serif;
+    color: #ffffff;
+    line-height: 26px;
+    font-size: 18px;
+    margin: 0;
+  }
+    html {
+      margin: auto;
+      height: 100%;
+    }
+
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400&subset=latin,latin-ext);
+
+    body {
+        overflow-y: scroll;
+      margin: auto;
+    }
+
+    footer {
+      z-index: 1000;
+    }
+    .navbar {
+      width: 100%;
+      margin: auto;
+      margin-top: 5px;
+    }
+
+    .nav-container{
+      border-radius: 0;
+      background: #6bbaa7;
+      height: 3.5em;
+      width: 90%;
+      display: flex;
+    }
+
+    nav p{
+      font-family: 'Karla';
+      letter-spacing: 3px;
+      font-size: 18px;
+    }
+
+    nav .left{
+      width: 40%;
+      display: flex;
+    }
+
+    nav .right{
+      width: 40%;
+      display: flex;
+    }
+
+    nav .logo-container{
+      width: 20%;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    nav ul{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+      justify-content: space-around;
+    }
+
+    nav .logo-container img{
+      max-height: 3em;
+      object-fit: contain;
+      padding:10px;
+      position: relative;
+      top: 0.5em;
+    }
+
+    nav ul li a div {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      top: 0px;
+      transition: top ease 0.5s;
+      justify-content: space-between;
+    }
+
+    nav ul li a #htab p {
+      padding-top: 0.4em;
+    }
+
+    nav ul li a #htab img {
+      object-fit: contain;
+      max-height: 2.7em;
+    }
+
+
+    nav ul li {
+      text-align: center;
+      vertical-align: middle;
+      line-height: 2.5em; 
+      font-size: 1.2em;
+      width: 40%;
+      display: inline;
+      position: relative;
+      align-content: center;
+      overflow: hidden;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      color: #8c8887;
+    }
+
+    nav ul li a:hover {
+      color: white;
+      text-decoration-line: none;
+    }
+
+    nav ul li::after {
+      background-color: yellow;
+      content: "";
+      width: 0;
+      height: 5px;
+      left: 0;
+      bottom: 0;
+      transition: width 0.4s ease 0s;
+      position: absolute;
+    }
+
+
+    nav ul li:hover::after {
+      width: 100%;
+    }
+
+    nav ul li:hover #htab {
+      top: -2em;
+      color: #8c8887;
+      
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #htab .item {
+      padding-bottom: 4px;
+    }
+
+</style>
+
+<div class="navbar">
+  <nav class="nav-container navbar fixed-top">
+    <ul class="left">
+      <li class="dashboard">
+        <a href="#">
+          <div id="htab">
+            <p class="item">I</p>
+            <p class="item">ADD STATUS</p>
+          </div>
+        </a>
+      </li>
+      <li class="profile">
+        <a href="#">
+          <div id="htab">
+            <p class="item">II</p>
+            <p class="item">PROFILE</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <div class="logo-container">
+      <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c528.png">
+    </div>
+    <ul class="right">
+      <li class="friends">
+        <a href="#">
+          <div id="htab">
+            <p class="item">III</p>
+            <p class="item">ADD FRIEND</p>
+          </div>
+        </a>
+      </li>
+      <li class="stats">
+        <a href="#">
+          <div id="htab">
+            <p class="item">IV</p>
+            <p class="item">STATS</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </nav>  
+</div>

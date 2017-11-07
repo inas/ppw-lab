@@ -1,0 +1,201 @@
+ <head>
+ 	<style type="text/css">
+
+ 		footer p{
+		
+		  font-family: 'Karla', sans-serif;
+		  color: #ffffff;
+		  line-height: 26px;
+		  font-size: 18px;
+		  margin: 0;
+		}
+
+ 		html {
+ 			margin: auto;
+ 			-webkit-transition: all 0.7s ease;
+		    -moz-transition: all 0.7s ease;
+		    -o-transition: all 0.7s ease;
+		    transition: all 0.7s ease; 
+ 		}
+ 		body content .container{
+ 			width: 80%;
+ 			-webkit-transition: all 0.7s ease;
+		    -moz-transition: all 0.7s ease;
+		    -o-transition: all 0.7s ease;
+		    transition: all 0.7s ease; 
+ 		}
+
+ 		footer{
+ 			z-index: 1000;
+ 			margin-top: 20px;
+ 			display: flex;
+ 			flex-direction: column;
+ 			justify-content: space-between;
+ 			width: 100%;
+ 			position: fixed;
+ 			top: calc(100% - 60px);
+ 			-webkit-transition: all 0.7s ease;
+		    -moz-transition: all 0.7s ease;
+		    -o-transition: all 0.7s ease;
+		    transition: all 0.7s ease;
+ 			margin:auto;
+ 			margin-top: 2%;
+ 		}
+
+ 		footer div {
+ 			padding-left: 2em;
+ 			padding-right: 2em;
+ 			background-color: #6c648b;
+ 			position: static;
+ 			display: block;
+ 			width: 90%;
+ 			margin: auto;
+ 			display: flex;
+ 			justify-content: space-between;
+ 			flex-direction: row;
+ 			align-items: flex-start;
+ 		}
+
+ 		footer .flex {
+ 			display: flex;
+ 			justify-content: space-between;
+ 			flex-direction: row;
+ 			align-items: flex-start;
+ 		}
+
+ 		footer .flex .flex-item {
+ 			height: 40px;
+ 			padding-top: 7px;
+ 			width: 100%;
+ 			align-self: flex-start;
+ 			align-items: stretch;
+ 		}
+
+ 		footer.flex .flex-item p{
+ 			height: 100%;
+ 			padding: 0px;
+ 			height: 40px;
+ 		}
+
+ 		footer.flex .flex-item a {
+ 			display: inline;
+ 			height: 40px;
+ 		}
+
+
+ 		footer .flex .flex-item a img, footer .flex .flex-item a p{
+ 			display: inline;
+ 		}
+
+ 		footer .top-footer{
+ 			margin:auto;
+ 		}
+
+ 		.top-footer p {
+ 			display: inline;
+ 			bottom: 0px;
+ 		}
+
+ 		footer .flex .flex-item a img{
+ 			float: left;
+ 			height: 30px;
+ 			display: inline-block;
+ 			 -webkit-filter: invert(100%)
+ 		}
+
+ 		footer .designed-by {
+ 			padding-bottom: 6px;
+ 			padding-top: 4px;
+ 			justify-content: center;
+ 		}
+
+ 		footer .credits {
+ 			display: flex;
+ 			justify-content: space-around;
+ 			text-align: center;
+ 			margin:auto;
+ 			flex-wrap: wrap;
+ 		}
+
+ 		footer .credits button {
+
+	 		width: 130px;
+	 		font-size: 25px;
+			color: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);
+			background: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);
+			border: solid 5px;
+			border-color: #fba100;
+		  	letter-spacing: -2px;
+		    -webkit-transition: all 0.7s ease;
+		    -moz-transition: all 0.7s ease;
+		    -o-transition: all 0.7s ease;
+		    transition: all 0.7s ease; 
+		}
+
+		.credits button:hover {
+			animation-duration: 0.5s;
+			letter-spacing: 5px;
+			border-color: linear-gradient(to left, #F09819 0%, #EDDE5D 51%, #F09819 100%);
+		    color: linear-gradient(to left, #F09819 0%, #EDDE5D 51%, #F09819 100%);
+		}
+
+		footer .about {
+			padding-top: 10px;
+			text-align: center;
+			padding-bottom: 10px;
+
+		}
+		footer:hover {
+			-webkit-transition: all 0.7s ease;
+		    -moz-transition: all 0.7s ease;
+		    -o-transition: all 0.7s ease;
+		    transition: all 0.7s ease; 
+			top:auto;
+			bottom: 0;
+		}
+
+		footer:hover:after {
+			-webkit-transition: all 0.7s ease;
+		    -moz-transition: all 0.7s ease;
+		    -o-transition: all 0.7s ease;
+		    transition: all 0.7s ease; 
+			top:calc(100% - 60px);
+		}
+
+		.lingin {
+			padding: 0;
+		}
+
+		.top-page , .top-page p{
+			padding: 0;
+		}
+		
+ 	</style>
+ </head>
+<footer class="footer-container">
+	<div class="flex" id=="top-footer">
+		<div class="flex-item">
+			<p class="lingin">LING IN</p>
+			<a href="#" class="top-page">
+				<p>TOP</p>
+				<img src="http://www.freeiconspng.com/uploads/arrow-icon-clip-art-file-down-arrow-icon-png-balin-icon-arrow-right--32.png">
+			</a>
+		</div>
+	</div>
+	<div class="designed-by">
+		<p>
+			DESIGNED BY
+		</p>
+	</div>
+	<div class="credits">
+		<button onclick="location.href='http://ling-in.herokuapp.com/fitur-1/'" type="button"> sheila </button>
+		<button onclick="location.href='http://ling-in.herokuapp.com/fitur-2/'" type="button"> widya </button>
+		<button onclick="location.href='http://ling-in.herokuapp.com/fitur-3/'" type="button"> kevin </button>
+		<button onclick="location.href='http://ling-in.herokuapp.com/fitur-4/'" type="button"> inas </button>
+	</div>
+	<div class="about">
+		<p>
+			Making this website has been such an experience. Never have {{ author }} ever had a week with less sleep than this past week. He slept when he had to after adding bits to his html and do it again as soon as he woke up. It might not be as pretty but he put a lot of effort in it.
+		</p>
+	</div>
+</footer>
