@@ -1,10 +1,8 @@
  //chat box
  var text = document.getElementById('chat-text');
- var chat = document.getElementById('msg-insert-id');
  var send = true;
 
 $('textarea').keyup(function(e) {
-  console.log(e);
   if(e.keyCode == 13) {
     if (send){
       $(".msg-insert").append('<div class = "msg-send">'+ text.value + '</div>')
@@ -71,26 +69,30 @@ var themes = [
     {"id":10,"text":"Brown","bcgColor":"#795548","fontColor":"#FAFAFA"}
 ]
 
-var selected;
-
-$('.apply-button').on('click', function(){  // sesuaikan class button
-    // [TODO] ambil value dari elemen select .my-select
-    var selectedTheme = $('.my-select').val();
-    // [TODO] cocokan ID theme yang dipilih dengan daftar theme yang ada
-	// [TODO] ambil object theme yang dipilih
-	selected = themes[selectedTheme];
-    // [TODO] aplikasikan perubahan ke seluruh elemen HTML yang perlu diubah warnanya
-    $('body').css({"backgroundColor": selected.bcgColor});
-	$('.text-center').css({"color": selected.fontColor});
-	$('.my-select').select2().val(selected.id).change();
-    // [TODO] simpan object theme tadi ke local storage selectedTheme
-   	localStorage.setItem('selectedTheme', JSON.stringify(themes[selectedTheme]));
-})
-
 $(document).ready(function() {
-    $('.my-select').select2({'data' : themes});
-    init = themes[3]
-    $('body').css({"backgroundColor": init.bcgColor});
-	$('.text-center').css({"color": init.fontColor});
-	$('.my-select').select2().val(init.id).change();
+  $('.my-select').select2({'data' : themes});
+  $('.apply-button').on('click', function(){
+    theme = themes[$('.my-select').val()];
+    changeTheme(theme);
+    localStorage.setItem('selectedTheme',JSON.stringify(theme));
+  })
 });
+
+function changeTheme(newTheme){
+  $('body').css({"backgroundColor": newTheme['bcgColor']});
+  $('.text-center').css({"color": newTheme['fontColor']});
+}
+
+if (localStorage.getItem('themes') === null){ 
+  localStorage.setItem('themes', JSON.stringify(themes)); 
+}
+
+var themes = JSON.parse(localStorage.getItem('themes'));
+
+if (localStorage.getItem('selectedTheme') === null) { 
+  localStorage.setItem('selectedTheme', JSON.stringify(themes[3])); 
+}
+
+var theme = JSON.parse(localStorage.getItem('selectedTheme'));
+changeTheme(theme);
+

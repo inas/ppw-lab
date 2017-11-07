@@ -951,21 +951,48 @@ Masukkan kode berikut ke dalam `static/js/test.js`
 
 1.  Membuat Halaman Chat Box
     1. [ ] Tambahkan _lab_6.html_ pada folder templates
+        bikin biasa
     2. [ ] Tambahkan _lab_6.css_ pada folder _./static/css_
+        bikin biasa
     3. [ ] Tambahkan file _lab_6.js_ pada folder _lab_6/static/js_
+        bikin biasa
     4. [ ] Lengkapi potongan kode pada _lab_6.js_ agar dapat berjalan
+        1. ambil elemen yang akan mendisplay layar dengan id
+        2. buat fungsi yang dijalankan jika pada textarea user menekan keyboard. input dari keyboard akan ditampilkan di text area sedangkan jika menekan enter maka text yang ada di text area akan ditampilkan di elemen atasnya dengan cara menambahkan elemen html baru
 
 2. Mengimplementasikan Calculator
     1. [ ] Tambahkan potongan kode ke dalam file _lab_6.html_ pada folder templates
     2. [ ] Tambahkan potongan kode ke dalam file _lab_6.css_ pada folder _./static/css_
     3. [ ] Tambahkan potongan kode ke dalam file _lab_6.js_ pada folder _lab_6/static/js_
     4. [ ] Implementasi fungsi `AC`.
+        1. ubah value dari elemen #print menjadi null
 
 3.  Mengimplementasikan select2
     1. [ ] Load theme default sesuai selectedTheme
+        saat baru membuka halaman maka akses array index 3 yang merupakan objek warna indigo
     2. [ ] Populate data themes dari local storage ke select2
-    3. [ ] Local storage berisi themes dan selectedTheme
+    ```javascript
+        $('.my-select').select2({'data' : themes});
+    });
+    ```
+    3. [ ] Local storage berisi themes dan    selectedTheme
+    ```javascript
+        if (localStorage.getItem('themes') === null){ 
+          localStorage.setItem('themes', JSON.stringify(themes)); 
+        }
+        var themes = JSON.parse(localStorage.getItem('themes'));
+        if (localStorage.getItem('selectedTheme') === null) { 
+          localStorage.setItem('selectedTheme', JSON.stringify(themes[3])); 
+        }
+    ```
     4. [ ] Warna berubah ketika theme dipilih
+    ```javascript
+      $('.apply-button').on('click', function(){
+        theme = themes[$('.my-select').val()];
+        changeTheme(theme);
+        localStorage.setItem('selectedTheme',JSON.stringify(theme));
+      })
+    ```
 
 4.  Pastikan kalian memiliki _Code Coverage_ yang baik
     1. [ ]  Jika kalian belum melakukan konfigurasi untuk menampilkan _Code Coverage_ di Gitlab maka lihat langkah `Show Code Coverage in Gitlab` di [README.md](https://gitlab.com/PPW-2017/ppw-lab/blob/master/README.md).
