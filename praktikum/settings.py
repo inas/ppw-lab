@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import socket
+import environ
 import dj_database_url #pip install dj-database-url 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'lab_4',
     'lab_5',
     'lab_6',
+    'lab_7',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,5 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# base = environ.Path(__file__) - 2 # two folders back (/a/b/ - 2 = /)
+# environ.Env.read_env(env_file=base('.env')) # reading .env file
