@@ -15,20 +15,58 @@
     </section>
 {% endblock %}
 {% block javascript %}
-    <script>
+        <script>
         $( document ).ready(function () {
-            {# lengkapi pemanggilan ajax berikut untuk mengambil daftar teman yang ada di database #}
             $.ajax({
                 method: "GET",
-                url: #URL untuk mendapatkan list teman],
-                success: function (response) {
-                    #tampilkan list teman ke halaman
-                    #hint : gunakan fungsi jquery append()
+                url: '{% url "lab-7:get-friend-list" %}',
+                success: function (friend_list) {
+                    var friends = JSON.parse(friend_list);
+                    if(friends.length == 0){
+                    
+                        var html = '<div class="alert alert-danger text-center">\
+                                <strong>Opps!</strong> Tidak ada mahasiswa \
+                            </div>';
+                        $("#friend-list").append(html)
+                    }else{
+                        var counter = 0;
+                        $.each(friends,function(index,friend){
+                            var button = '<span class="pull-right">'+
+                                            '<button type="button" class="btn btn-xs btn-danger"'+
+                                            'onClick="deleteFriend('+friend.pk+')">'+
+                                                '&times;'+
+                                            '</button>'+
+                                         '</span>';
+                            
+                            var html;
+
+                            if(counter % 2 == 0){
+                                html = '<a class="list-group-item list-group-item-warning text-center">'+
+                                            friend.fields.friend_name +
+                                            ' (' + friend.fields.npm + ')' + button + '</a>';
+                            }else if(counter % 2 == 1){
+                                html = '<a class="list-group-item list-group-item-info text-center">'+
+                                            friend.fields.friend_name +
+                                            ' (' + friend.fields.npm + ')' + button + '</a>';
+                            }
+
+                            $("#friend-list").append(html)
+                            
+                            counter += 1;
+                        })
+                    }
                 },
                 error: function(error){
-                    #tampilkan pesan error
+                    alert("ERROR");
                 }
             });
         });
+
+        function deleteFriend(id){
+            window.open('delete-friend/'+id+'/', '_self');
+        }
+
     </script>
+
 {% endblock %}
+    

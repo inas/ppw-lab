@@ -52,6 +52,6 @@ class CSUIhelper:
 
     instance = None
 
-    def __init__(self, SSO_USERNAME, SSO_PASSWORD):
+    def __init__(self):
         if not CSUIhelper.instance:
             CSUIhelper.instance = CSUIhelper.__CSUIhelper()

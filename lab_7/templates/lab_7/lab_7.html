@@ -22,6 +22,22 @@
                             <strong>Opps!</strong> Tidak ada mahasiswa
                         </div>
                     {% endif %}
+
+                    <div class="pagination">
+                        <span class="step-links">
+                            {% if mahasiswa_list.has_previous %}
+                                <a href="?page={{ mahasiswa_list.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ mahasiswa_list.number }} of {{ mahasiswa_list.paginator.num_pages }}
+                            </span>
+
+                            {% if mahasiswa_list.has_next %}
+                                <a href="?page={{ mahasiswa_list.next_page_number }}">next</a>
+                            {% endif %}
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -54,28 +70,31 @@
 {% endblock %}
 {% block javascript %}
 <script>
-    var addFriend = function(nama, npm) {
-        $.ajax({
-            method: "POST",
-            url: "{% url "lab-7:add-friend" %}",
-            data: { name: nama, npm: npm},
-            success : function (friend) {
-                html = '<a class="list-group-item clearfix">' +
-                    friend.friend_name +
-                    '</a>';
-                $("#friend-list").append(html)
-            },
-            error : function (error) {
-                alert("Mahasiswa tersebut sudah ditambahkan sebagai teman")
-            }
-        });
+var addFriend = function(nama, npm) {
+    $.ajax({
+        method: "POST",
+        url: '{% url "lab-7:add-friend" %}',
+        data: {name: nama, npm: npm},
+        dataType: "json",
+        success : function (friend) {
+            console.log("succc")
+            html = '<a class="list-group-item clearfix">' +
+                friend.friend_name +
+                '</a>';
+            $("#friend-list").append(html)
+            window.location.reload();
+        },
+        error : function (error) {
+            console.log("fdfukjghfhgjhk")
+            alert("Mahasiswa tersebut sudah ditambahkan sebagai teman")
+        }
+    });
     };
 
     $("#add-friend").on("submit", function () {
        name = $("#field_name").val()
        npm = $("#field_npm").val()
-        addFriend(name, npm)
-        event.preventDefault();
+       addFriend(name, npm)
     });
 
     $("#field_npm").change(function () {
@@ -96,6 +115,7 @@
             }
         });
     });
+
 </script>
 {% endblock %}
 

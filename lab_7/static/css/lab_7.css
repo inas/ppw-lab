@@ -1,14 +1,16 @@
 body{
-   margin-top: 70px;
+   margin-top: 0;
 }
-/* Custom navbar style */
-.navbar-static-top {
-   margin-bottom: 19px;
-}
-.navbar-default .navbar-nav>li>a {
-   cursor: pointer;
+
+content{
+	margin-top: 40px;
 }
 /* Textarea not resizeable */
 textarea {
    resize:none
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
 }
