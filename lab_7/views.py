@@ -16,6 +16,7 @@ def index(request):
     # TODO berikan akses token dari backend dengan menggunakaan helper yang ada
 
     mahasiswa_list = csui_helper.instance.get_mahasiswa_list()
+
     paginator = Paginator(mahasiswa_list,15)
     page = request.GET.get('page')
     try:
@@ -26,6 +27,7 @@ def index(request):
         mahasiswa = paginator.page(paginator.num_pages)
     friend_list = Friend.objects.all()
     response = {"mahasiswa_list": mahasiswa, "friend_list": friend_list}
+
     html = 'lab_7/lab_7.html'
     return render(request, html, response)
 
@@ -34,6 +36,7 @@ def friend_list(request):
     response['friend_list'] = friend_list
     html = 'lab_7/daftar_teman.html'
     return render(request, html, response)
+
 
 def get_friend_list(request):
     if request.method == 'GET':
@@ -46,8 +49,8 @@ def add_friend(request):
     if request.method == 'POST':
         name = request.POST['name']
         npm = request.POST['npm']
-        taken = Friend.objects.filter(npm=npm).exists()
-        if (not taken):
+        sudah = Friend.objects.filter(npm=npm).exists()
+        if (not sudah):
             friend = Friend(friend_name=name,npm=npm)
             friend.save()
         data = model_to_dict(friend)
