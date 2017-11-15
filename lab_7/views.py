@@ -53,6 +53,7 @@ def add_friend(request):
         if (not sudah):
             friend = Friend(friend_name=name,npm=npm)
             friend.save()
+        data = model_to_dict(friend)
         return HttpResponse(data)
 
 
