@@ -28,3 +28,15 @@ class Lab6UnitTest(TestCase):
 	def test_getfriendlist_using_index_func(self):
 		found = resolve('/lab-7/get-friend-list/')
 		self.assertEqual(found.func, get_friend_list)
+
+
+	def test_add_friend(self):
+		response_post = Client().post('/lab-7/add-friend/', {'name':"AII", 'npm':"1606829730"})
+		counting_all_friend = Friend.objects.all().count()
+        self.assertEqual(counting_all_friend, 1)
+
+	def test_add_existing_friend(self):
+		response_post = Client().post('/lab-7/add-friend/', {'name':"AII", 'npm':"1606829730"})
+		counting_all_friend = Friend.objects.all().count()
+		response_post = Client().post('/lab-7/add-friend/', {'name':"AII", 'npm':"1606829730"})
+        self.assertEqual(counting_all_friend, 1)        
