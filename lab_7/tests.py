@@ -1,7 +1,12 @@
-from django.test import TestCase
-from .views import index, friend_list, get_friend_list
-from django.test import Client
+from django.test import TestCase, Client
 from django.urls import resolve
+from .models import Friend
+from .views import index, add_friend, validate_npm, delete_friend, friend_list, get_friend_list, paginate_page
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models.manager import Manager
+from unittest.mock import patch
+from .api_csui_helper.csui_helper import CSUIhelper
+
 # Create your tests here.
 class Lab6UnitTest(TestCase):
 
