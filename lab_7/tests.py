@@ -51,13 +51,13 @@ class Lab6UnitTest(TestCase):
 		self.assertEqual(response.status_code,302)
 		self.assertNotIn(friend, Friend.objects.all())
 
-	def test_invalid_sso(self):
-		username = "username"
-		password = "password"
-		csui_helper = CSUIhelper()
-		with self.assertRaises(Exception) as context:
-			csui_helper.instance.get_access_token(username,password)
-		self.assertIn("username",str(context.exception))
+	# def test_invalid_sso(self):
+	# 	username = "username"
+	# 	password = "password"
+	# 	csui_helper = CSUIhelper()
+	# 	with self.assertRaises(Exception) as context:
+	# 		csui_helper.instance.get_access_token(username,password)
+	# 	self.assertIn("username",str(context.exception))
 
 	# def test_pagination(self):
 	# 	data = ["1","2","3","4"]
