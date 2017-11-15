@@ -33,10 +33,16 @@ class Lab6UnitTest(TestCase):
 	def test_add_friend(self):
 		response_post = Client().post('/lab-7/add-friend/', {'name':"AII", 'npm':"1606829730"})
 		counting_all_friend = Friend.objects.all().count()
-        self.assertEqual(counting_all_friend, 1)
+		self.assertEqual(counting_all_friend, 1)
 
 	def test_add_existing_friend(self):
 		response_post = Client().post('/lab-7/add-friend/', {'name':"AII", 'npm':"1606829730"})
 		counting_all_friend = Friend.objects.all().count()
 		response_post = Client().post('/lab-7/add-friend/', {'name':"AII", 'npm':"1606829730"})
-        self.assertEqual(counting_all_friend, 1)        
+		self.assertEqual(counting_all_friend, 1)        
+
+	def test_delete_friend(self):
+		friend = Friend.objects.create(friend_name="AII", npm="1606829730")
+		response = Client().post('/lab-7/friend-list/delete-friend/' + str(friend.id) + '/')
+		self.assertEqual(response.status_code,302)
+		self.assertNotIn(friend, Friend.objects.all())
