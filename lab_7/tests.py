@@ -46,3 +46,24 @@ class Lab6UnitTest(TestCase):
 		response = Client().post('/lab-7/friend-list/delete-friend/' + str(friend.id) + '/')
 		self.assertEqual(response.status_code,302)
 		self.assertNotIn(friend, Friend.objects.all())
+
+	def test_invalid_sso(self):
+		username = "username"
+		password = "password"
+		csui_helper = CSUIhelper()
+		with self.assertRaises(Exception) as context:
+			csui_helper.instance.get_access_token(username,password)
+		self.assertIn("username",str(context.exception))
+
+	def test_pagination(self):
+		data = ["1","2","3","4"]
+		test1 = paginate_page("...", data)
+		test2 = paginate_page(-1, data)
+		with patch.object(Manager, 'get_or_create') as a:
+			a.side_effect = PageNotAnInteger("page is not an integer")
+			res = paginate_page("...", data)
+			self.assertEqual(res['page_range'], test1['page_range'])
+		with patch.object(Manager, 'get_or_create') as a:
+			a.side_effect = EmptyPage("page number is less than 1")
+			res = paginate_page(-1, data)
+			self.assertEqual(res['page_range'], test2['page_range'])
