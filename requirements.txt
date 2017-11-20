@@ -7,6 +7,7 @@ coverage==4.4.1
 dj-database-url==0.4.2
 Django==1.11.4
 django-environ==0.4.4
+<<<<<<< HEAD
 first==2.0.1
 flake8==3.4.1
 gunicorn==19.7.1
@@ -24,6 +25,7 @@ pylint==1.7.2
 pythonz-bd==1.11.4
 pytz==2017.2
 requests==2.18.4
+<<<<<<< HEAD
 resumable-urlretrieve==0.1.5
 selenium==3.6.0
 six==1.10.0
