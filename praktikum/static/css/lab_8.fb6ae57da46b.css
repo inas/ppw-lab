@@ -1,0 +1,19 @@
+body{
+
+   margin-top: 0;
+}
+
+content{
+
+   margin-top: 70px;
+}
+/* Textarea not resizeable */
+textarea {
+   resize:none
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+}
+

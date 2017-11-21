@@ -1,3 +1,13 @@
 from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+import os
+import json
 
-# Create your views here.
+response = {}
+
+
+
+def index(request):
+    html = 'lab_8/lab_8.html'
+
+    return render(request, html, response)
