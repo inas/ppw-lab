@@ -58,9 +58,7 @@ class Lab7UnitTestCase(TestCase):
 		self.assertIn("firan",str(context.exception))
 
 	def test_invalid_page_pagination_number(self):
-		data = ["haha", "hehe", "hihi", "haha", "hehe", "hihi", "haha", "hehe", "hihi", "haha",
-				"hehe", "hihi", "haha", "hehe", "hihi", "haha", "hehe", "hihi", "haha", "hehe",
-				"hihi", "haha", "hehe", "hihi", "haha", "hehe", "hihi", "haha", "hehe", "hihi"]
+		data = ["s", "b", "c", "d", "e", "f", "g", "h"]
 		test_1 = paginate_page("...", data)
 		test_2 = paginate_page(-1, data)
 		with patch.object(Manager, 'get_or_create') as a:

@@ -1,0 +1,144 @@
+<!-- Jquery n Bootstrap Script -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
+
+<style type="text/css">
+    .profile-container{
+        margin: auto;
+		width: auto;
+		max-width: 950px;
+		min-width: 760px;
+        min-height: 260px;
+        height: 40%;
+        background-color: pink;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profile-container .image-banner{
+        position: relative;
+    	flex: 1;
+    	background-color: blue;
+    }
+
+    .profile-container .stats-bar{
+    	height: 20%;
+    	display: flex;
+    	flex-direction: row;
+    	justify-content: flex-end;
+    }
+
+    .profile-container .stats-bar .stats{
+    	display: flex;
+    	flex-direction: row-reverse;
+    	justify-content: flex-end;
+    }
+
+    .profile-container .stats-bar .stats > div {
+        margin: auto;
+        height: auto;
+    	width: 5.5em;
+        text-align: center;
+        font-size: 3vh;
+    }
+
+    .profile-container .stats-bar .stats .friends-total .label {
+        font-size: 2.3vh;
+    }
+
+    .profile-container #username{
+        max-width: 50%;
+        margin-left: 50%;
+        position: absolute;
+        right: 0.3em;
+        bottom: 0.2em;
+        font-size: 5vh;
+        text-align: right;
+    }
+
+    .profile-container .image-banner .image-profile {
+        top: 43%;
+        margin-left: 20px;
+        height: 200px;
+        position: absolute;
+        z-index: 5;
+        border-radius: 50%;
+        background-color: white;
+/*        top: 4em;
+*/    }
+
+
+
+    @media only screen and (max-width: 768px){
+        .profile-container{
+            margin: 0;
+            min-width: 0;
+            background-color: pink;
+            display: flex;
+        }
+
+        .profile-container .image-profile .image-profile {
+            height: 200px;
+            position: absolute;
+            z-index: 5;
+            border-radius: 50%;
+            background-color: white;
+            margin: 0;
+            padding: 0; 
+            }
+    }
+
+
+</style>
+
+<div class="profile-container">
+    <div class="image-banner">
+        <div class="image-profile">
+            foto
+        </div>
+        <div id="username">
+            Anisha Inas Izdihar
+        </div>
+	</div>
+	<div class="stats-bar">
+		<div class="stats">
+			<div id="friends-total">
+				<div class="label" id="friends-label">
+					Friends
+				</div>
+				<div id="get-friends">
+					1010
+				</div>
+			</div>
+			<div id="status-total">
+				<div class="label" id="status-label">
+					Status
+				</div>
+				<div id="get-status">
+					6272
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+    <textarea type="text" class="form-control post" id="exampleFormControlTextarea1 postInput" rows="3" placeholder="tell me what u thinking"></textarea>
+    <button class="postStatus" onclick="postStatus()">Post ke Facebook</button>
+</div>
+<button class="logout" onclick="facebookLogout()">Logout</button>
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.js"></script>
+<script type="text/javascript">
+    $(".image-profile").height($('.image-banner').height() - $(".stats-bar").height() ); 
+    $(".image-profile").width($('.image-banner').height() - $(".stats-bar").height() );
+    
+    $(window).resize(function(){ // On resize
+        $(".image-profile").height($('.image-banner').height() - $(".stats-bar").height() ); 
+        $(".image-profile").width($('.image-banner').height() - $(".stats-bar").height() );
+   });
+
+</script> -->

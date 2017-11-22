@@ -1,6 +1,22 @@
+const resizeImage = () => {
+  console.log('resizing image...');
+  console.log($('.image-banner').height());
+  console.log($('.image-profile').height());
+  $(".image-profile").height($('.image-banner').height() - $(".stats-bar").height() ); 
+  $(".image-profile").width($('.image-banner').height() - $(".stats-bar").height() );
+}
+
+console.log('test');
+$(document).ready(() => {
+  resizeImage();
+})
+      
+$(window).resize(function(){ // On resize
+  resizeImage();  
+});
+
 // FB initiation function
 window.fbAsyncInit = () => {
-  console.log("init");
   FB.init({
     appId      : '132368680796186',
     cookie     : true,
@@ -19,16 +35,14 @@ window.fbAsyncInit = () => {
       // the user's ID, a valid access token, a signed
       // request, and the time the access token 
       // and signed request each expire
-      var uid = response.authResponse.userID;
-      var accessToken = response.authResponse.accessToken;
       render(true);
     } else if (response.status === 'not_authorized') {
       // the user is logged in to Facebook, 
       // but has not authenticated your app
-      render(false)
+      render(false);
     } else {
       // the user isn't logged in to Facebook.
-      render(false)
+      render(false);
     }
    });
   // Hal ini dilakukan agar ketika web dibuka dan ternyata sudah login, maka secara
@@ -48,7 +62,7 @@ window.fbAsyncInit = () => {
 // merender atau membuat tampilan html untuk yang sudah login atau belum
 // Ubah metode ini seperlunya jika kalian perlu mengganti tampilan dengan memberi
 // Class-Class Bootstrap atau CSS yang anda implementasi sendiri
-const render = loginFlag => {
+const render = (loginFlag) => {
   if (loginFlag) {
     // Jika yang akan dirender adalah tampilan sudah login
 
@@ -57,20 +71,21 @@ const render = loginFlag => {
     // Object user ini merupakan object hasil response dari pemanggilan API Facebook.
     getUserData(user => {
       // Render tampilan profil, form input post, tombol post status, dan tombol logout
-      $('#lab8').html(
-        '<div class="profile">' +
-          '<img class="cover" src="' + user.cover.source + '" alt="cover" />' +
-          '<img class="picture" src="' + user.picture.data.url + '" alt="profpic" />' +
-          '<div class="data">' +
-            '<h1>' + user.name + '</h1>' +
-            '<h2>' + user.about + '</h2>' +
-            '<h3>' + user.email + ' - ' + user.gender + '</h3>' +
-          '</div>' +
-        '</div>' +
-        '<input id="postInput" type="text" class="post" placeholder="Ketik Status Anda" />' +
-        '<button class="postStatus" onclick="postStatus()">Post ke Facebook</button>' +
-        '<button class="logout" onclick="facebookLogout()">Logout</button>'
-      );
+      // $('#lab8').html(
+      //   '<div class="profile">' +
+      //     '<img class="picture" src="' + user.picture.data.url + '" alt="profpic" />' +
+      //     '<div class="data">' +
+      //       '<h1>' + user.name + '</h1>' +
+      //       '<h2>' + user.about + '</h2>' +
+      //       '<h3>' + user.email + ' - ' + user.gender + '</h3>' +
+      //     '</div>' +
+      //   '</div>' +
+      //   '<input id="postInput" type="text" class="post" placeholder="Ketik Status Anda" />' +
+      //   '<button class="postStatus" onclick="postStatus()">Post ke Facebook</button>' +
+      //   '<button class="logout" onclick="facebookLogout()">Logout</button>'
+      // );
+      $("#profile").load("profile");
+      resizeImage();
 
       // Setelah merender tampilan di atas, dapatkan data home feed dari akun yang login
       // dengan memanggil method getUserFeed yang kalian implementasi sendiri.
@@ -80,32 +95,36 @@ const render = loginFlag => {
         feed.data.map(value => {
           // Render feed, kustomisasi sesuai kebutuhan.
           if (value.message && value.story) {
-            $('#lab8').append(
+            $('#timeline').append(
               '<div class="feed">' +
                 '<h1>' + value.message + '</h1>' +
                 '<h2>' + value.story + '</h2>' +
               '</div>'
             );
           } else if (value.message) {
-            $('#lab8').append(
+            $('#timeline').append(
               '<div class="feed">' +
                 '<h1>' + value.message + '</h1>' +
               '</div>'
             );
           } else if (value.story) {
-            $('#lab8').append(
+            $('#timeline').append(
               '<div class="feed">' +
                 '<h2>' + value.story + '</h2>' +
               '</div>'
             );
           }
+          resizeImage();
         });
       });
     });
   } else {
     // Tampilan ketika belum login
-    alert("wy")
-    $('#lab8').html('<button class="login" onclick="facebookLogin()">Login</button>');
+    $('#lab8').html(
+      '<div id="container-login-btn">' +
+        '<button type="button" class="btn btn-primary btn-lg btn-block" onclick="facebookLogin()">Login with Facebook</button>' +
+      '</div>'
+      );
   }
 };
 
@@ -119,11 +138,15 @@ const facebookLogin = () => {
      console.log('Welcome!  Fetching your information.... ');
      FB.api('/me', function(response) {
        console.log('Good to see you, ' + response.name + '.');
+       // render(true);
+       location.reload();
      });
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
-  });
+  }, {scope : 'public_profile,email,user_about_me,user_birthday,user_posts,publish_actions'},
+      {auth_type : 'reauthenticate'}
+);
 };
 
 const facebookLogout = () => {
@@ -166,7 +189,7 @@ const getUserFeed = (fun) => {
   // tersebut
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') { 
-      FB.api('/me?fields=feed', 'GET', function(response) {
+      FB.api('/me/feed', 'GET', function(response) {
           console.log('API response', response);
           fun(response);
         }
@@ -179,30 +202,20 @@ const postFeed = (textmessage) => {
   // Todo: Implement method ini,
   // Pastikan method ini menerima parameter berupa string message dan melakukan Request POST ke Feed
   // Melalui API Facebook dengan message yang diterima dari parameter.
-  FB.login(function(response)
-        {
-          if (response.authResponse)
-          {
-            console.log(response.authResponse.accessToken);
-            var opts = {
-             message : textmessage
-            };
-            FB.api('/me/feed', 'POST', opts, function(response)
+
+            FB.api('/me/feed', 'POST',  {"message": textmessage}, function(response)
             {
+              console.log("test " + JSON.stringify(response));
              if (!response || response.error)
              {
                console.log(response.error);
                alert('Posting error occured');
              }else{
                alert('Success - Post ID: ' + response.id);
+               render(true);
              }
             });
-
-        }else{
-          alert('Not logged in');
-        }
-      }
-  )
+      
 };
 
 const postStatus = () => {

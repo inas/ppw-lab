@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'lab_4',
     'lab_5',
     'lab_6',
-    # 'lab_7',
+    'lab_7',
     'lab_8',
 ]
 
