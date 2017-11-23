@@ -40,11 +40,13 @@ def paginate_page(page, data_list):
     except EmptyPage:
         data = paginator.page(paginator.num_pages)
 
-
+     # Get the index of the current page
     index = data.number - 1
 
+     # This value is maximum index of pages, so the last page - 1
     max_index = len(paginator.page_range)
 
+     # calculate where to slice the list
     start_index = index if index >= 10 else 0
     end_index = 10 if index < max_index - 10 else max_index
 
