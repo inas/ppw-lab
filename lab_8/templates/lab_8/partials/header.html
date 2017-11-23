@@ -1,21 +1,157 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{% url 'lab-7:index' %}">Lab 7</a>
-    </div>
+<link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"/>
+  <style type="text/css">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="{% url 'lab-7:friend-list' %}">Friend List</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  .navbar {
+    width: auto;
+    height: 2em;
+  }
+
+  nav p{
+  
+    font-family: 'Karla', sans-serif;
+    color: #ffffff;
+    line-height: 26px;
+    font-size: 18px;
+    margin: 0;
+  }
+    html {
+      margin: auto;
+      height: 100%;
+    }
+
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400&subset=latin,latin-ext);
+
+    .navbar {
+      width: 100%;
+      margin: auto;
+    }
+
+    .nav-container{
+      border-radius: 0;
+      background: #6bbaa7;
+      height: 3.5em;
+      display: flex;
+    }
+
+    nav p{
+      font-family: 'Karla';
+      letter-spacing: 3px;
+      font-size: 18px;
+    }
+
+    nav .left{
+      width: 40%;
+      display: flex;
+    }
+
+    nav .right{
+      width: 40%;
+      display: flex;
+    }
+
+    nav .logo-container{
+      width: 20%;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    nav ul{
+      height: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+      justify-content: space-around;
+    }
+
+    nav .logo-container img{
+      max-height: 3em;
+      object-fit: contain;
+      padding:10px;
+      position: relative;
+      top: 0.5em;
+    }
+
+    nav ul li a div {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      top: 0px;
+      transition: top ease 0.5s;
+      justify-content: space-between;
+    }
+
+    nav ul li a #htab p {
+      padding-top: 0.4em;
+    }
+
+    nav ul li a #htab img {
+      object-fit: contain;
+      max-height: 2.7em;
+    }
+
+
+    nav ul li {
+      text-align: center;
+      vertical-align: middle;
+      line-height: 2.5em; 
+      font-size: 1.2em;
+      width: 40%;
+      display: inline;
+      position: relative;
+      align-content: center;
+      overflow: hidden;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      color: #8c8887;
+    }
+
+    nav ul li a:hover {
+      color: white;
+      text-decoration-line: none;
+    }
+
+    nav ul li::after {
+      background-color: yellow;
+      content: "";
+      width: 0;
+      height: 5px;
+      left: 0;
+      bottom: 0;
+      transition: width 0.4s ease 0s;
+      position: absolute;
+    }
+
+
+    nav ul li:hover::after {
+      width: 100%;
+    }
+
+    nav ul li:hover #htab {
+      top: -3.5em;
+      color: #8c8887;
+      
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #htab .item {
+      padding-bottom: 4px;
+    }
+
+</style>
+
+<div class="navbar">
+  <nav class="nav-container navbar fixed-top">
+
+  </nav>  
+</div>

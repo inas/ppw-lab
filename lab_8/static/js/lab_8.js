@@ -29,6 +29,7 @@ window.fbAsyncInit = () => {
   // status login terkoneksi (connected)
 
   FB.getLoginStatus(function(response) {
+    console.log(response);
     if (response.status === 'connected') {
       // the user is logged in and has authenticated your
       // app, and response.authResponse supplies
@@ -84,8 +85,9 @@ const render = (loginFlag) => {
       //   '<button class="postStatus" onclick="postStatus()">Post ke Facebook</button>' +
       //   '<button class="logout" onclick="facebookLogout()">Logout</button>'
       // );
-      $("#profile").load("profile");
-      resizeImage();
+      $("#profile").load("profile", () => {
+        resizeImage(); 
+      });
 
       // Setelah merender tampilan di atas, dapatkan data home feed dari akun yang login
       // dengan memanggil method getUserFeed yang kalian implementasi sendiri.
@@ -114,7 +116,6 @@ const render = (loginFlag) => {
               '</div>'
             );
           }
-          resizeImage();
         });
       });
     });
