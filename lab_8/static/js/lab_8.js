@@ -126,23 +126,39 @@ const render = (loginFlag) => {
       getUserFeed(feed => {
         feed.data.map(value => {
           // Render feed, kustomisasi sesuai kebutuhan.
+          console.log('ambil');
           if (value.message && value.story) {
             $('#timeline').append(
               '<div class="feed">' +
-                '<h1>' + value.message + '</h1>' +
-                '<h2>' + value.story + '</h2>' +
+                '<div id="pp"> ' + 
+                  value.image-profile +
+                '</div>' +
+                '<div class="fb-status">' +
+                  '<h1>' + value.message + '</h1>' +
+                  '<p>' + value.story + '</p>' +
+                '</div>' +
               '</div>'
             );
           } else if (value.message) {
             $('#timeline').append(
               '<div class="feed">' +
-                '<h1>' + value.message + '</h1>' +
+                '<div id="pp"> ' + 
+                  value.image-profile +
+                '</div>' +
+                '<div class="fb-status">' +
+                  '<h1>' + value.message + '</h1>' +
+                '</div>' +
               '</div>'
             );
           } else if (value.story) {
             $('#timeline').append(
               '<div class="feed">' +
-                '<h2>' + value.story + '</h2>' +
+                '<div id="pp"> ' + 
+                  value.image-profile +
+                '</div>' +
+                '<div class="fb-status">' +
+                  '<p>' + value.story + '</p>' +
+                '</div>' +
               '</div>'
             );
           }
@@ -234,18 +250,18 @@ const postFeed = (textmessage) => {
   // Pastikan method ini menerima parameter berupa string message dan melakukan Request POST ke Feed
   // Melalui API Facebook dengan message yang diterima dari parameter.
 
-            FB.api('/me/feed', 'POST',  {"message": textmessage}, function(response)
-            {
-              console.log("test " + JSON.stringify(response));
-             if (!response || response.error)
-             {
-               console.log(response.error);
-               alert('Posting error occured');
-             }else{
-               alert('Success - Post ID: ' + response.id);
-               render(true);
-             }
-            });
+  FB.api('/me/feed', 'POST',  {"message": textmessage}, function(response)
+  {
+    console.log("test " + JSON.stringify(response));
+   if (!response || response.error)
+   {
+     console.log(response.error);
+     alert('Posting error occured');
+   }else{
+     alert('Success - Post ID: ' + response.id);
+     location.reload();
+   }
+  });
       
 };
 
