@@ -1,6 +1,6 @@
 <!-- Jquery n Bootstrap Script -->
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
-
+{% load staticfiles %}
 <style type="text/css">
     .profile-container{
         margin: auto;
@@ -17,7 +17,9 @@
     .profile-container .image-banner{
         position: relative;
     	flex: 1;
-    	background-color: blue;
+        background-image: linear-gradient(0deg,rgba(2,0,1,0.3),rgba(2,0,0,0.3)), url( "{% static 'image/img.jpg' %}");
+        background-size: cover;
+        back
     }
 
     .profile-container .stats-bar{
@@ -34,7 +36,7 @@
         margin-right: 0.3vw;
     }
 
-    .profile-container .stats-bar .stats > div {
+    .profile-container .stats-bar .stats .label {
         margin: auto;
         height: auto;
     	width: 5.5em;
@@ -42,9 +44,6 @@
         font-size: 3vh;
     }
 
-    .profile-container .stats-bar .stats .friends-total .label {
-        font-size: 2.3vh;
-    }
 
     .profile-container #username{
         position: absolute;
@@ -66,8 +65,18 @@
         max-width: 50%;
     }
 
+    .stats .label {
+        padding-bottom: 0;
+    }
 
+    #get-friends, #get-birth {
+        font-size: 3.5vh;
+    }
 
+    .image-banner .banner{
+        position: absolute;
+        max-width: 100%;
+    }
     @media only screen and (max-width: 768px){
         .profile-container #username{
 
@@ -90,6 +99,24 @@
             margin: 0;
             padding: 0; 
             }
+
+        .profile-container .image-banner .image-profile {
+            margin-left: 10px;
+            }
+    }
+
+    @media only screen and (max-width: 340px){
+        
+        .profile-container {
+            max-height: 30%;
+            max-width: none;
+            width: 100%;
+            margin: 0;
+            min-width: 0;
+            background-color: pink;
+            display: flex;
+        }
+
     }
 
     #modalBtn {
@@ -124,11 +151,12 @@
 
 <div class="profile-container">
     <div class="image-banner">
+<!--         <img class="banner" src="{% static 'image/img.jpg' %}"/> -->
         <div class="image-profile">
-            foto
+            
         </div>
         <div id="username">
-            Anisha Inas Izdihar
+            
         </div>
 	</div>
 	<div class="stats-bar">
@@ -138,15 +166,15 @@
 					Friends
 				</div>
 				<div id="get-friends">
-					1010
+					
 				</div>
 			</div>
-			<div id="status-total">
-				<div class="label" id="status-label">
+			<div id="birthday">
+				<div class="label" id="birth-label">
 					Status
 				</div>
-				<div id="get-status">
-					6272
+				<div id="get-birth">
+					52
 				</div>
 			</div>
 		</div>

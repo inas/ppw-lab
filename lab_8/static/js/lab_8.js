@@ -34,6 +34,15 @@ const modalFunction = () => {
   }
 
 }
+
+const getInfo = () => {
+  FB.api('/me/friends', 'GET', {fields: 'summary'}, function(response)
+  {
+  document.getElementById('get-friends').innerHTML = 
+  response.summary.total_count;
+  });
+}
+
 $(document).ready(() => {
   resizeImage();
 
@@ -99,26 +108,24 @@ const render = (loginFlag) => {
     // yang menerima object user sebagai parameter.
     // Object user ini merupakan object hasil response dari pemanggilan API Facebook.
     getUserData(user => {
-      // Render tampilan profil, form input post, tombol post status, dan tombol logout
-      // $('#lab8').html(
-      //   '<div class="profile">' +
-      //     '<img class="picture" src="' + user.picture.data.url + '" alt="profpic" />' +
-      //     '<div class="data">' +
-      //       '<h1>' + user.name + '</h1>' +
-      //       '<h2>' + user.about + '</h2>' +
-      //       '<h3>' + user.email + ' - ' + user.gender + '</h3>' +
-      //     '</div>' +
-      //   '</div>' +
-      //   '<input id="postInput" type="text" class="post" placeholder="Ketik Status Anda" />' +
-      //   '<button class="postStatus" onclick="postStatus()">Post ke Facebook</button>' +
-      //   '<button class="logout" onclick="facebookLogout()">Logout</button>'
-      // );
       $("#profile").load("profile", () => {
         resizeImage(); 
         modalFunction();
-
+        $(".image-profile").append(
+          '<img class="object-fit_cover" src="' + user.picture.data.url + '"/>'
+        );
+        $("#username").append(
+            user.name
+          );
+        getInfo();
+        $(".nav-container").append(
+            '<button id="logoutBtn" onclick="facebookLogout()">'+
+              'log out'+
+            '</button>'
+          )
       });
 
+      console.log("iya");
       // Setelah merender tampilan di atas, dapatkan data home feed dari akun yang login
       // dengan memanggil method getUserFeed yang kalian implementasi sendiri.
       // Method itu harus menerima parameter berupa fungsi callback, dimana fungsi callback
@@ -131,35 +138,47 @@ const render = (loginFlag) => {
             $('#timeline').append(
               '<div class="feed">' +
                 '<div id="pp"> ' + 
-                  value.image-profile +
+                  '<img class="picture" src="'   + user.picture.data.url + '" alt="profpic" />'+
                 '</div>' +
                 '<div class="fb-status">' +
-                  '<h1>' + value.message + '</h1>' +
+                  '<p id="id-status">' + user.name + '</p>' +
+                  '<p>' + value.message + '</p>' +
                   '<p>' + value.story + '</p>' +
+                '</div>' +
+                '<div class="delete">' +
+                  '<img class="picture" onclick="deleteStatus(\''+ value.id + '\')" src="https://cdn4.iconfinder.com/data/icons/devine_icons/Black/PNG/Folder%20and%20Places/Trash-Recyclebin-Empty-Closed.png" alt="delete" />' +
                 '</div>' +
               '</div>'
             );
           } else if (value.message) {
             $('#timeline').append(
-              '<div class="feed">' +
-                '<div id="pp"> ' + 
-                  value.image-profile +
-                '</div>' +
-                '<div class="fb-status">' +
-                  '<h1>' + value.message + '</h1>' +
-                '</div>' +
-              '</div>'
+                '<div class="feed">' +
+                  '<div id="pp"> ' + 
+                    '<img class="picture" src="'   + user.picture.data.url + '" alt="profpic" />'+
+                  '</div>' +
+                  '<div class="fb-status">' +
+                    '<p id="id-status">' + user.name + '</p>' +
+                    '<p>' + value.message + '</p>' +
+                  '</div>' +
+                  '<div class="delete">' +
+                    '<img onclick="deleteStatus(\''+ value.id + '\')" class="picture" src="https://cdn4.iconfinder.com/data/icons/devine_icons/Black/PNG/Folder%20and%20Places/Trash-Recyclebin-Empty-Closed.png" alt="delete" />' +
+                  '</div>' +
+                '</div>'
             );
           } else if (value.story) {
             $('#timeline').append(
-              '<div class="feed">' +
-                '<div id="pp"> ' + 
-                  value.image-profile +
-                '</div>' +
-                '<div class="fb-status">' +
-                  '<p>' + value.story + '</p>' +
-                '</div>' +
-              '</div>'
+                '<div class="feed">' +
+                  '<div id="pp"> ' + 
+                    '<img onclick="deleteStatus(\''+ value.id + '\')" class="picture" src="'   + user.picture.data.url + '" alt="profpic" />'+
+                  '</div>' +
+                  '<div class="fb-status">' +
+                    '<p id="id-status">' + user.name + '</p>' +
+                    '<p>' + value.story + '</p>' +
+                  '</div>' +
+                  '<div class="delete">' +
+                    '<img class="picture" src="https://cdn4.iconfinder.com/data/icons/devine_icons/Black/PNG/Folder%20and%20Places/Trash-Recyclebin-Empty-Closed.png" alt="delete" />' +
+                  '</div>' +
+                '</div>'
             );
           }
         });
@@ -191,7 +210,7 @@ const facebookLogin = () => {
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
-  }, {scope : 'public_profile,email,user_about_me,user_birthday,user_posts,publish_actions'},
+  }, {scope : 'public_profile,email,user_about_me,user_birthday,user_posts,publish_actions,user_friends'},
       {auth_type : 'reauthenticate'}
 );
 };
@@ -202,6 +221,7 @@ const facebookLogout = () => {
   // ketika logout sukses. Anda dapat memodifikasi fungsi facebookLogout di atas.
   FB.logout(function(response) {
     render(false);
+    location.reload();
   // user is now logged out
   });
 };
@@ -270,3 +290,14 @@ const postStatus = () => {
   postFeed(message);
 };
   
+const deleteStatus = (id) => {
+  var postId = id;
+  FB.api(postId, 'delete', function(response) {
+    if (!response || response.error) {
+      alert('Error occured');
+    } else {
+      alert('post deleted')
+      location.reload();
+    }
+  });
+}
