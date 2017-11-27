@@ -131,9 +131,10 @@ const render = (loginFlag) => {
       // Method itu harus menerima parameter berupa fungsi callback, dimana fungsi callback
       // ini akan menerima parameter object feed yang merupakan response dari pemanggilan API Facebook
       getUserFeed(feed => {
+        var counter = 0;
         feed.data.map(value => {
           // Render feed, kustomisasi sesuai kebutuhan.
-          console.log('ambil');
+          
           if (value.message && value.story) {
             $('#timeline').append(
               '<div class="feed">' +
@@ -180,8 +181,14 @@ const render = (loginFlag) => {
                   '</div>' +
                 '</div>'
             );
+            
           }
+          counter+=1;
         });
+        console.log(counter);
+        $("#get-status").append(
+          counter
+        );
       });
     });
   } else {
@@ -221,7 +228,7 @@ const facebookLogout = () => {
   // Pastikan method memiliki callback yang akan memanggil fungsi render tampilan belum login
   // ketika logout sukses. Anda dapat memodifikasi fungsi facebookLogout di atas.
   FB.logout(function(response) {
-    render(false);
+    $("#logoutBtn").remove();
     location.reload();
   // user is now logged out
   });

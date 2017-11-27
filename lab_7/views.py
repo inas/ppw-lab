@@ -53,10 +53,10 @@ def paginate_page(page, data_list):
     page_range = list(paginator.page_range)[start_index:end_index]
     paginate_data = {'data':data, 'page_range':page_range}
     return paginate_data
-
+        
 def friend_list(request):
-    friend_list = Friend.objects.all()
-    response['friend_list'] = friend_list
+    # friend_list = Friend.objects.all()
+    # response['friend_list'] = friend_list
     html = 'lab_7/daftar_teman.html'
     return render(request, html, response)
 

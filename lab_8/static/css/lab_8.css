@@ -102,6 +102,15 @@ footer {
         margin: 0;
         padding: 0; 
         }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 550px;
+    }
 }
 
 
@@ -126,7 +135,8 @@ footer {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
+    max-width: 550px;
 }
 
 /* The Close Button */

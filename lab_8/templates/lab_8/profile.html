@@ -13,6 +13,8 @@
         color: white;
         display: flex;
         flex-direction: column;
+        font-family: "Open Sans";
+
     }
 
     .profile-container .image-banner{
@@ -35,14 +37,16 @@
     	flex-direction: row-reverse;
     	justify-content: flex-end;
         margin-right: 0.3vw;
+        font-family: "Open Sans";
     }
 
     .profile-container .stats-bar .stats .label {
         margin: auto;
         height: auto;
-    	width: 5.5em;
+    	width: 5em;
         text-align: center;
-        font-size: 3vh;
+        font-size: 1em;
+        font-family: "Open Sans";
     }
 
 
@@ -57,6 +61,7 @@
         font-weight: bold;
         text-align: right;
         max-width: 50%;
+        font-family: "Abril Fatface";
     }
 
     .profile-container .image-banner .image-profile {
@@ -74,13 +79,35 @@
         padding-bottom: 0;
     }
 
-    #get-friends, #get-birth {
+    #get-friends, #get-status {
         font-size: 3.5vh;
     }
 
     .image-banner .banner{
         position: absolute;
         max-width: 100%;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%;
+        max-width: 550px;
+        font-family: 'Abril Fatface';
+        font-size: 3em;
+    }
+
+    .modal-content textarea{
+        font-size: 0.5em;
+        font-family: "Open Sans";
+    }
+
+    .modal-content button{
+        margin-top: 2vh;
+        font-size: 0.5em;
+        font-family: "Open Sans";
     }
     @media only screen and (max-width: 768px){
         .profile-container #username{
@@ -107,7 +134,47 @@
 
         .profile-container .image-banner .image-profile {
             margin-left: 10px;
-            }
+        }
+
+        .profile-container .stats-bar .stats > div {
+            margin: auto;
+            height: auto;
+            width: 5em;
+            text-align: center;
+            font-size: 3vh;
+        }
+
+        .profile-container #username {
+            letter-spacing: 0.4vh;
+            position: absolute;
+            right: 0.3em;
+            bottom: 1vh;
+            font-size: 9vh;
+            opacity: 0.5;
+            color: white;
+            line-height: 9vh;
+            font-weight: bold;
+            text-align: right;
+            max-width: 50%;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            height: 80%;
+            max-width: 550px;
+        }
+
+        .modal-content .post{
+            font-size: 0.6em;
+            font-family: "Open Sans";
+            border: 0.5px solid lightgray;
+            height: auto;
+            overflow: 40%;
+        }               
     }
 
     @media only screen and (max-width: 340px){
@@ -122,6 +189,28 @@
             display: flex;
         }
 
+        .profile-container #username {
+            position: absolute;
+            right: 0.2em;
+            bottom: 1vh;
+            font-size: 7.8vh;
+            opacity: 0.5;
+            color: white;
+            line-height: 9vh;
+            font-weight: bold;
+            text-align: right;
+            max-width: 50%;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            height: 80%;
+            max-width: 550px;
+        }
     }
 
     #modalBtn {
@@ -135,7 +224,9 @@
         border-radius: 100%;
         border-style: none;
         font-size: 4em;
-        background-color: yellow;
+        background-color: black;
+        color: white;
+        opacity: 0.6;
         padding: auto;
         line-height: 1.4em;
         text-align: center;
@@ -148,10 +239,11 @@
         height: 1.6em;
         width: 1.6em;
         font-size: 4.2em;
-        background-color: gold;
+        opacity: 1;
         line-height: 1.6em;
         text-align: center;
     }
+
 </style>
 
 <div class="profile-container">
@@ -174,12 +266,12 @@
 					
 				</div>
 			</div>
-			<div id="birthday">
-				<div class="label" id="birth-label">
+			<div id="status">
+				<div class="label" id="status-label">
 					Status
 				</div>
-				<div id="get-birth">
-					52
+				<div id="get-status">
+					
 				</div>
 			</div>
 		</div>
@@ -193,10 +285,10 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+    <p>What's new today?</p>
     <div>
-    <textarea type="text" class="form-control post" id="postInput" rows="3" placeholder="tell me what ur thinking"></textarea>
-    <button class="postStatus" onclick="postStatus()">Post ke Facebook</button>
+    <textarea type="text" class="form-control post" id="postInput" rows="3" placeholder="Rumour has it..."></textarea>
+    <button class="postStatus" onclick="postStatus()">Post to Facebook</button>
 </div>
   </div>
 

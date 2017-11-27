@@ -14,6 +14,8 @@
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
  <!-- Jquery n Bootstrap Script -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -113,11 +115,12 @@
           padding-bottom: 2px;
           align-items: center;
           background-color: white;
-          margin-top: 1px;
+          margin-top: 2px;
           display: flex;
           flex-direction: row;
           justify-content: flex-start;
           width: 70%;
+          font-family: "Open Sans";
         }
 
         #timeline #pp{
@@ -144,17 +147,19 @@
         #timeline .delete .picture{
           height: 1.4em;
           width: auto;
+          opacity: 0.7;
         }
 
         #timeline .delete .picture:hover{
-          height: 1.4em;
-          width: auto;
+          
           cursor: pointer;
+          opacity: 1;
         }
 
         
         #id-status {
           margin-bottom: 0;
+          font-family: "Abril Fatface";
         }
 
         .image-profile img{
@@ -185,6 +190,10 @@
         @media only screen and (max-width: 375px){
           #lab8 > p {
             margin-top: 10vh;
+          }
+
+          #myModal .modal {
+            padding-top: 75px;
           }
         }
 

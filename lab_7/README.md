@@ -7,6 +7,7 @@
 1. Membuat halaman untuk menampilkan semua mahasiswa fasilkom
     1. [v] Terdapat list yang berisi daftar mahasiswa fasilkom, yang dipanggil dari django model.
     buat objek csui_helper. isinya pi dari csui. bakal ngambil password dari file .env. jangan lupa diignore. disitu bakal login macem-macem deh. ke api kita akan minta semua daftar mahasiswa melalui method yang kemudian akan dipaginate terlebih dahulu.
+    
     2. [v] Buatlah tombol untuk dapat menambahkan list mahasiswa kedalam daftar teman (implementasikan menggunakan ajax).
     nanti kalau tombol dipencet bakal pass ke function add-friend. liat dulu apakah udah pernah ada npm yang sama di friend. nanti tambahin friendnya ke object.
 
