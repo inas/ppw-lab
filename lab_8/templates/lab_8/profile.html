@@ -9,7 +9,8 @@
 		min-width: 760px;
         min-height: 260px;
         height: 40%;
-        background-color: pink;
+        background-color: black;
+        color: white;
         display: flex;
         flex-direction: column;
     }
@@ -17,9 +18,9 @@
     .profile-container .image-banner{
         position: relative;
     	flex: 1;
-        background-image: linear-gradient(0deg,rgba(2,0,1,0.3),rgba(2,0,0,0.3)), url( "{% static 'image/img.jpg' %}");
+/*        background-image: linear-gradient(0deg,rgba(2,0,1,0.3),rgba(2,0,0,0.3)), url( "{% static 'image/img.jpg' %}");*/
         background-size: cover;
-        back
+        
     }
 
     .profile-container .stats-bar{
@@ -48,8 +49,12 @@
     .profile-container #username{
         position: absolute;
         right: 0.3em;
-        bottom: 0.2em;
-        font-size: 5vh;
+        bottom: 0vh;
+        font-size: 11vh;
+        opacity: 0.5;
+        color: white;
+        line-height: 15vh;
+        font-weight: bold;
         text-align: right;
         max-width: 50%;
     }
@@ -86,7 +91,7 @@
             width: 100%;
             margin: 0;
             min-width: 0;
-            background-color: pink;
+            background-color: black;
             display: flex;
         }
 
@@ -113,7 +118,7 @@
             width: 100%;
             margin: 0;
             min-width: 0;
-            background-color: pink;
+            background-color: black;
             display: flex;
         }
 

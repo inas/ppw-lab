@@ -122,10 +122,10 @@ const render = (loginFlag) => {
             '<button id="logoutBtn" onclick="facebookLogout()">'+
               'log out'+
             '</button>'
-          )
+          );
+        $(".image-banner").css("background-image", "url( '" + user.cover.source + "')");
       });
 
-      console.log("iya");
       // Setelah merender tampilan di atas, dapatkan data home feed dari akun yang login
       // dengan memanggil method getUserFeed yang kalian implementasi sendiri.
       // Method itu harus menerima parameter berupa fungsi callback, dimana fungsi callback
@@ -187,7 +187,8 @@ const render = (loginFlag) => {
   } else {
     // Tampilan ketika belum login
     $('#lab8').html(
-      '<div id="container-login-btn">' +
+      '<p>ready for it...?</p>' +
+      '<div id="login-btn">' +
         '<button type="button" class="btn btn-primary btn-lg btn-block" onclick="facebookLogin()">Login with Facebook</button>' +
       '</div>'
       );

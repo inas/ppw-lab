@@ -12,6 +12,8 @@
  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
  <link rel="stylesheet" type="text/css" href="{% static 'css/lab_8.css' %}" />
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+ <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet"/>
  <!-- Jquery n Bootstrap Script -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -24,95 +26,167 @@
    </title>
 
    <style type="text/css">
-     #timeline{
-        word-wrap: break-word;
-        overflow-wrap: break-word;
+
+      @font-face {
+        font-family: 'Canterbury';
+        src: url( "{% static 'font/Canterbury.tff' %}");
+        src: local( "{% static 'font/Canterbury.tff' %}");
+      }
+
+      html { 
+        background: linear-gradient(
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
+        ),url({% static 'image/news.jpg' %}) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+      body{
+        background: transparent; 
+      }
+
+      #lab8 > p {
+        font-family: Canterbury;
+        font-size: 23vh;
+        line-height: 0.8em;
+        text-align: center;
         margin: auto;
-        margin-top: 1.5em;
-        margin-bottom: 3em;
-        width: 100%;
-        max-width: 950px;
-        min-width: 760px;
-        background-color: white;
-        border-style: none;
-        display: flex;
-        flex-direction: column;
+        margin-top: 20vh;
+        margin-bottom: 0.2em;
+        color: white;
+      }
+
+      #login-btn .btn{
+        font-family: Merriweather;
         font-size: 2em;
-        align-items: center;
-      }
+        color: white;
+        background: transparent;
+        border: 3px solid white;
+        border-radius: 0;
+        width: 13em;
+        margin: auto;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+        }
 
-      #timeline .feed {
-        padding-top: 2px;
-        padding-bottom: 2px;
-        align-items: center;
-        background-color: grey;
-        margin-top: 1px;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 70%;
-      }
+        a {
+          color: white;
+        }
 
-      #timeline #pp{
-        margin-left: 0.6em;
-      }
-      #timeline #pp img{
-        border-radius: 50%;
-      }
+        #login-btn .btn:hover {
+          cursor: pointer;
+          color: white;
+          border: 4.8px solid white;
+          -webkit-transition: all 0.35s ease;
+          transition: all 0.35s ease;
+        }
 
-      #timeline .fb-status{
-        margin-left: 1em;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
+        #login-btn .btn:hover >a {
+          color: white;
+          -webkit-transition: all 0.35s ease;
+          transition: all 0.35s ease;
+        }
 
-      #timeline .delete{
-        margin-right: 0.6em;
-        height: 2.5em;
-        align-self: flex-end;
-        vertical-align: center;
-      }
-
-      #timeline .delete .picture{
-        height: 1.4em;
-        width: auto;
-      }
-
-      #timeline .delete .picture:hover{
-        height: 1.4em;
-        width: auto;
-        cursor: pointer;
-      }
-
-      
-      #id-status {
-        margin-bottom: 0;
-      }
-
-      .image-profile img{
-          border-radius: 50%;
-          height: 100%;
+       #timeline{
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          margin: auto;
+          margin-top: 1.5em;
+          margin-bottom: 3em;
           width: 100%;
-      }
-
-      @media only screen and (max-width: 768px){
-
-        #timeline{
-          max-width: none;
-          min-width: 0;
-          margin: 0;
+          max-width: 950px;
+          min-width: 760px;
+          background-color: transparent;
+          border-style: none;
+          display: flex;
+          flex-direction: column;
+          font-size: 2em;
+          align-items: center;
         }
 
         #timeline .feed {
-          background-color: grey;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          align-items: center;
+          background-color: white;
           margin-top: 1px;
           display: flex;
           flex-direction: row;
           justify-content: flex-start;
+          width: 70%;
+        }
+
+        #timeline #pp{
+          margin-left: 0.6em;
+        }
+        #timeline #pp img{
+          border-radius: 50%;
+        }
+
+        #timeline .fb-status{
+          margin-left: 1em;
+          display: flex;
+          flex-direction: column;
           width: 100%;
         }
-      }
+
+        #timeline .delete{
+          margin-right: 0.6em;
+          height: 2.5em;
+          align-self: flex-end;
+          vertical-align: center;
+        }
+
+        #timeline .delete .picture{
+          height: 1.4em;
+          width: auto;
+        }
+
+        #timeline .delete .picture:hover{
+          height: 1.4em;
+          width: auto;
+          cursor: pointer;
+        }
+
+        
+        #id-status {
+          margin-bottom: 0;
+        }
+
+        .image-profile img{
+            border-radius: 50%;
+            height: 100%;
+            width: 100%;
+            border: 4.8px solid black;
+        }
+
+        @media only screen and (max-width: 768px){
+
+          #timeline{
+            max-width: none;
+            min-width: 0;
+            margin: 0;
+          }
+
+          #timeline .feed {
+            background-color: white;
+            margin-top: 1px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 100%;
+          }
+        }
+
+        @media only screen and (max-width: 375px){
+          #lab8 > p {
+            margin-top: 10vh;
+          }
+        }
 
    </style>
 </head>

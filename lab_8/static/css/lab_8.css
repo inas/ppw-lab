@@ -1,3 +1,11 @@
+
+
+@font-face {
+  font-family: 'Canterbury';
+  src: url('../font/Canterbury.ttf');
+  src: local('../font/Canterbury.ttf')
+}
+
 body{
 
    margin-top: 0;
@@ -20,7 +28,6 @@ footer {
 	min-width: 760px;
     min-height: 260px;
     height: 40%;
-    background-color: pink;
     display: flex;
     flex-direction: column;
 }
