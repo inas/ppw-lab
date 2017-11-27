@@ -10,7 +10,15 @@
         <p> Username : {{ request.COOKIES.user_login }} </p>
     </div>
     <div class="panel-footer">
-        <a href="{% url 'lab-9:cookie_clear' %}" class="btn btn-danger"> Reset Cookies (Logout) </a>
-    </div>
+<!--         <a href="{% url 'lab-9:cookie_clear' %}" class="btn btn-danger"> Reset Cookies (Logout) </a>
+ -->    </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(() => {
+        $(".nav-container").append(
+            '<a id="logoutBtn" href="{% url "lab-9:cookie_clear" %}"> Reset Cookies (Logout) </a>'
+        )
+    })
+</script>
+
 {% endblock %}

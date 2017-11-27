@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -17,6 +16,8 @@ response = {}
 # ======================================================================== #
 # User Func
 # Apa yang dilakukan fungsi INI? #silahkan ganti ini dengan penjelasan kalian 
+# kalau pada session belum login maka akan diredirect ke halaman login.
+# kalau sudah login maka akan diarahkan ke profil
 def index(request):
     print ("#==> masuk index")
     if 'user_login' in request.session:
@@ -24,6 +25,7 @@ def index(request):
     else:
         html = 'lab_9/session/login.html'
         return render(request, html, response)
+
 
 def set_data_for_session(res, request):
     response['author'] = request.session['user_login']
@@ -91,6 +93,79 @@ def clear_session_drones(request):
     messages.error(request, "Berhasil reset favorite drones")
     return HttpResponseRedirect(reverse('lab-9:profile'))
 
+### Soundcard
+def add_session_soundcard(request, id):
+    ssn_key = request.session.keys()
+    if not 'soundcard' in ssn_key:
+        print ("# init soundcard ")
+        request.session['soundcard'] = [id]
+    else:
+        soundcard = request.session['soundcard']
+        print ("# existing soundcard => ", soundcard)
+        if id not in soundcard:
+            print ('# add new item, then save to session')
+            soundcard.append(id)
+            request.session['soundcard'] = soundcard
+
+    messages.success(request, "Berhasil tambah soundcard favorite")
+    return HttpResponseRedirect(reverse('lab-9:profile'))
+
+def del_session_soundcard(request, id):
+    print ("# DEL soundcard")
+    soundcard = request.session['soundcard']
+    print ("before = ", soundcard)
+    soundcard.remove(id) #untuk remove id tertentu dari list
+    request.session['soundcard'] = soundcard
+    print ("after = ", soundcard)
+
+    messages.error(request, "Berhasil hapus dari favorite")
+    return HttpResponseRedirect(reverse('lab-9:profile'))
+
+def clear_session_soundcard(request):
+    print ("# CLEAR session soundcard")
+    print ("before 1 = ", request.session['soundcard'])
+    del request.session['soundcard']
+
+    messages.error(request, "Berhasil reset favorite soundcard")
+    return HttpResponseRedirect(reverse('lab-9:profile'))
+
+### Optical
+def add_session_optical(request, id):
+    ssn_key = request.session.keys()
+    if not 'optical' in ssn_key:
+        print ("# init optical ")
+        request.session['optical'] = [id]
+    else:
+        optical = request.session['optical']
+        print ("# existing optical => ", optical)
+        if id not in optical:
+            print ('# add new item, then save to session')
+            optical.append(id)
+            request.session['optical'] = optical
+
+    messages.success(request, "Berhasil tambah optical favorite")
+    return HttpResponseRedirect(reverse('lab-9:profile'))
+
+def del_session_optical(request, id):
+    print ("# DEL optical")
+    optical = request.session['optical']
+    print ("before = ", optical)
+    optical.remove(id) #untuk remove id tertentu dari list
+    request.session['optical'] = optical
+    print ("after = ", optical)
+
+    messages.error(request, "Berhasil hapus dari favorite")
+    return HttpResponseRedirect(reverse('lab-9:profile'))
+
+def clear_session_optical(request):
+    print ("# CLEAR session optical")
+    print ("before 1 = ", request.session['optical'])
+    del request.session['optical']
+
+    messages.error(request, "Berhasil reset favorite optical")
+    return HttpResponseRedirect(reverse('lab-9:profile'))
+
+
 # ======================================================================== #
 # COOKIES
 
@@ -150,7 +225,7 @@ def cookie_profile(request):
 
 def cookie_clear(request):
     res = HttpResponseRedirect('/lab-9/cookie/login')
-    res.delete_cookie('lang')
+    res.delete_cookie('user_password')
     res.delete_cookie('user_login')
 
     msg = "Anda berhasil logout. Cookies direset"

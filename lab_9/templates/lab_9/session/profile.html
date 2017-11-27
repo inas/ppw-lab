@@ -14,8 +14,8 @@
         <p> Role : {{ role }} </p>
     </div>
     <div class="panel-footer">
-        <a href="{% url 'lab-9:auth_logout' %}" class="btn btn-danger pull-right" onclick="return confirm('Keluar?')">
-            Logout </a>
+<!--         <a href="{% url 'lab-9:auth_logout' %}" class="btn btn-danger pull-right" onclick="return confirm('Keluar?')">
+            Logout </a> -->
         <a href="{% url 'lab-9:cookie_login' %}" class="btn btn-info"> Masuk Halaman Cookies </a>
     </div>
 </div>
@@ -48,4 +48,11 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(() => {
+        $(".nav-container").append(
+            '<a id="logoutBtn" href="{% url "lab-9:auth_logout" %}" onclick="return confirm(\'Keluar?\')"> Logout </a>'
+        )
+    })
+</script>
 {% endblock %}
