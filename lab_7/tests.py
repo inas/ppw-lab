@@ -33,7 +33,7 @@ class Lab7UnitTestCase(TestCase):
 
 	def test_add_friend(self):
 		response_post = Client().post('/lab-7/add-friend/', 
-			{'name':"Firandra Savitri", 'npm':"1606829043"}
+			{'name':"Anisha Inas", 'npm':"1606829730"}
 		)
 		self.assertEqual(response_post.status_code, 200)
 
@@ -44,18 +44,18 @@ class Lab7UnitTestCase(TestCase):
 		self.assertJSONEqual(html_response,{'is_taken':False})
 
 	def test_delete_friend(self):
-		friend = Friend.objects.create(friend_name="Firandra Savitri", npm="1606829043")
+		friend = Friend.objects.create(friend_name="inas", npm="1606829730")
 		response = Client().post('/lab-7/friend-list/delete-friend/' + str(friend.id) + '/')
 		self.assertEqual(response.status_code,302)
 		self.assertNotIn(friend, Friend.objects.all())
 
 	def test_invalid_sso_username_and_password(self):
-		username = "firan"
-		password = "hahihuheho"
+		username = "inas"
+		password = "yaa"
 		csui_helper = CSUIhelper()
 		with self.assertRaises(Exception) as context:
 			csui_helper.instance.get_access_token(username,password)
-		self.assertIn("firan",str(context.exception))
+		self.assertIn("inas",str(context.exception))
 
 	def test_invalid_page_pagination_number(self):
 		data = ["s", "b", "c", "d", "e", "f", "g", "h"]
