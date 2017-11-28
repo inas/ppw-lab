@@ -2,7 +2,7 @@
 <style type="text/css">
 
   .navbar{
-    font-family: "Pirata One";
+    font-family: Raleway;
     margin-bottom: 0;
     overflow: hidden;
   }
@@ -31,30 +31,33 @@
     float: left;
   }
 
-  #logoutBtn{
+  #logoutBtn, #backBtn{
     float: right;
 
   }
 
-  #logoutBtn {
-    font-size: 1em;
-    height: 1.5em;
+  #logoutBtn, #backBtn{
+    font-size: 0.8em;
+    height: 2em;
     line-height: 1em;
     color: white;
     background: transparent;
-    border: 3px solid white;
+    border: 2px solid white;
     border-radius: 1.6px;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
+    padding: 0.4em;
+    margin-top: 0.25em;
+    margin-right: 0.5em;
   }
 
   a {
     color: white;
   }
 
-  #logoutBtn:hover {
+  #logoutBtn:hover , #backBtn:hover{
     background: white;
     color: black;
     border: 3px solid white;
@@ -63,7 +66,7 @@
     text-decoration: none;
   }
 
-  #logoutBtn:hover >a {
+  #logoutBtn:hover >a, #backBtn:hover >a{
     color: black;
     -webkit-transition: all 0.35s ease;
     transition: all 0.35s ease;
@@ -74,7 +77,7 @@
 <div class="navbar">
   <nav class="nav-container navbar fixed-top">
     <div id="nav-brand">
-      Reputation Daily
+      Enterkomputer
     </div>
   </nav>  
 </div>

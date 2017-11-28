@@ -23,9 +23,16 @@
         </div>
     </div>
 </div>
-{% endblock %}
 <script type="text/javascript">
     $(document).ready(() => {
         $("#logoutBtn").remove();
     })
 </script>
+<script type="text/javascript">
+    $(document).ready(() => {
+        $(".nav-container").append(
+            '<a id="backBtn" href="{% url "lab-9:index" %}">Back to session</a>'
+        )
+    })
+</script>
+{% endblock %}

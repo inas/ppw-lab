@@ -35,8 +35,6 @@ def set_data_for_session(res, request):
     response['drones'] = get_drones().json()    
     response['soundcard'] = get_soundcard().json()
     response['optical'] = get_optical().json()
-    print(response['drones'])
-    print(response['optical'])
 
     # print ("#drones = ", get_drones().json(), " - response = ", response['drones'])
     ## handling agar tidak error saat pertama kali login (session kosong)
