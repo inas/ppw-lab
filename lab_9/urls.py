@@ -1,10 +1,10 @@
 from django.conf.urls import url
 from .views import index, profile, \
     add_session_drones, del_session_drones, clear_session_drones, \
+    add_session_soundcard, del_session_soundcard, clear_session_soundcard, \
+    add_session_optical, del_session_optical, clear_session_optical, \
     cookie_login, cookie_auth_login, cookie_profile, cookie_clear
 
-# sol to challenge
-from .views import add_session_item, del_session_item, clear_session_item
 # /sol
 from .custom_auth import auth_login, auth_logout
 
@@ -21,15 +21,20 @@ urlpatterns = [
     url(r'^del_session_drones/(?P<id>\d+)/$', del_session_drones, name='del_session_drones'),
     url(r'^clear_session_drones/$', clear_session_drones, name='clear_session_drones'),
 
+    #add/delete soundcard
+    url(r'^add_session_soundcard/(?P<id>\d+)/$', add_session_soundcard, name='add_session_soundcard'),
+    url(r'^del_session_soundcard/(?P<id>\d+)/$', del_session_soundcard, name='del_session_soundcard'),
+    url(r'^clear_session_soundcard/$', clear_session_soundcard, name='clear_session_soundcard'),
+
+    #add/delete optical
+    url(r'^add_session_optical/(?P<id>\d+)/$', add_session_optical, name='add_session_optical'),
+    url(r'^del_session_optical/(?P<id>\d+)/$', del_session_optical, name='del_session_optical'),
+    url(r'^clear_session_optical/$', clear_session_optical, name='clear_session_optical'),
+
     # cookie
     url(r'^cookie/login/$', cookie_login, name='cookie_login'),
     url(r'^cookie/auth_login/$', cookie_auth_login, name='cookie_auth_login'),
     url(r'^cookie/profile/$', cookie_profile, name='cookie_profile'),
     url(r'^cookie/clear/$', cookie_clear, name='cookie_clear'), #sekaligus logout dari cookie
-
-    #general function : solution to challenge
-    url(r'^add_session_item/(?P<key>\w+)/(?P<id>\d+)/$', add_session_item, name='add_session_item'),
-    url(r'^del_session_item/(?P<key>\w+)/(?P<id>\d+)/$', del_session_item, name='del_session_item'),
-    url(r'^clear_session_item/(?P<key>\w+)/$', clear_session_item, name='clear_session_item'),
 
 ]

@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
 #catatan: tidak bisa menampilkan messages jika bukan menggunakan method 'render'
-from .api_enterkomputer import get_drones
+from .api_enterkomputer import get_drones, get_soundcard, get_optical
 
 response = {}
 
@@ -32,7 +32,11 @@ def set_data_for_session(res, request):
     response['access_token'] = request.session['access_token']
     response['kode_identitas'] = request.session['kode_identitas']
     response['role'] = request.session['role']
-    response['drones'] = get_drones().json()
+    response['drones'] = get_drones().json()    
+    response['soundcard'] = get_soundcard().json()
+    response['optical'] = get_optical().json()
+    print(response['drones'])
+    print(response['optical'])
 
     # print ("#drones = ", get_drones().json(), " - response = ", response['drones'])
     ## handling agar tidak error saat pertama kali login (session kosong)
@@ -42,6 +46,17 @@ def set_data_for_session(res, request):
     # sebelumnya yang ada pada response, sehingga data tidak up-to-date
     else:
         response['fav_drones'] = []
+
+    if 'soundcard' in request.session.keys():
+        response['fav_soundcard'] = request.session['soundcard']
+    else:
+        response['fav_soundcard'] = []
+
+    if 'optical' in request.session.keys():
+        response['fav_optical'] = request.session['optical']
+    else:
+        response['fav_optical'] = []
+
 
 def profile(request):
     print ("#==> profile")
@@ -241,40 +256,3 @@ def my_cookie_auth(in_uname, in_pwd):
 #Apa yang dilakukan fungsi ini? 
 def is_login(request):
     return 'user_login' in request.COOKIES and 'user_password' in request.COOKIES
-
-
-### General Function
-def add_session_item(request, key, id):
-    print ("#ADD session item")
-    ssn_key = request.session.keys()
-    if not key in ssn_key:
-        request.session[key] = [id]
-    else:
-        items = request.session[key]
-        if id not in items:
-            items.append(id)
-            request.session[key] = items
-
-    msg = "Berhasil tambah " + key +" favorite"
-    messages.success(request, msg)
-    return HttpResponseRedirect(reverse('lab-9:profile'))
-
-def del_session_item(request, key, id):
-    print ("# DEL session item")
-    items = request.session[key]
-    print ("before = ", items)
-    items.remove(id)
-    request.session[key] = items
-    print ("after = ", items)
-
-    msg = "Berhasil hapus item " + key + " dari favorite"
-    messages.error(request, msg)
-    return HttpResponseRedirect(reverse('lab-9:profile'))
-
-def clear_session_item(request, key):
-    del request.session[key]
-    msg = "Berhasil hapus session : favorite " + key
-    messages.error(request, msg)
-    return HttpResponseRedirect(reverse('lab-9:index'))
-
-# ======================================================================== #

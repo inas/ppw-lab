@@ -1,7 +1,7 @@
 <div class="panel panel-info">
     <div class="panel-heading">
-        <h2> Daftar Soundcard : {{ drones | length}} </h2>
-        <a href="{% url 'lab-9:clear_session_drones' %}" class="btn btn-danger" onclick="return confirm('Reset data?')">
+        <h2> Daftar Soundcard : {{ soundcard | length}} </h2>
+        <a href="{% url 'lab-9:clear_session_soundcard' %}" class="btn btn-danger" onclick="return confirm('Reset data?')">
             Reset Favorite Soundcard
         </a>
     </div>
@@ -16,17 +16,17 @@
 
             </thead>
             <tbody>
-            {% for drone in drones %}
+            {% for sd in soundcard %}
             <tr>
                 <td> {{ forloop.counter }}</td>
-                <td> {{ drone.name }}</td>
-                <td> {{ drone.price }}</td>
-                <td> {{ drone.quantity }}</td>
+                <td> {{ sd.name }}</td>
+                <td> {{ sd.price }}</td>
+                <td> {{ sd.quantity }}</td>
                 <td>
-                    {% if not drone.id in fav_drones %}
-                    <a href="{% url 'lab-9:add_session_drones' drone.id %}" class="btn btn-primary"> Favoritkan </a>
+                    {% if not sd.id in fav_soundcard %}
+                    <a href="{% url 'lab-9:add_session_soundcard' sd.id %}" class="btn btn-primary"> Favoritkan </a>
                     {% else %}
-                    <a href="{%url 'lab-9:del_session_drones' drone.id %}" class="btn btn-primary"> Hapus dari favorit </a>
+                    <a href="{%url 'lab-9:del_session_soundcard' sd.id %}" class="btn btn-primary"> Hapus dari favorit </a>
                     {% endif %}
                 </td>
             </tr>

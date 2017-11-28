@@ -31,7 +31,7 @@
             <a href="#soundcard" aria-controls="settings" role="tab" data-toggle="tab"> Soundcard </a>
         </li>
         <li role="presentation">
-            <a href="#" aria-controls="settings" role="tab" data-toggle="tab"> Optical </a>
+            <a href="#optical" aria-controls="settings" role="tab" data-toggle="tab"> Optical </a>
         </li>
     </ul>
 
@@ -41,10 +41,10 @@
             {% include 'lab_9/tables/drones.html' %}
         </div>
         <div role="tabpanel" class="tab-pane fade" id="soundcard">
-            <!-- Apply the same here -->
+            {% include 'lab_9/tables/soundcard.html' %}
         </div>
         <div role="tabpanel" class="tab-pane fade" id="optical">
-            <!-- Apply the same here -->
+            {% include 'lab_9/tables/optical.html' %}
         </div>
     </div>
 </div>
