@@ -1,0 +1,25 @@
+{% extends "lab_10/layout/base.html" %}
+
+{% block content %}
+<div id="details">
+    <div class="poster">
+        <img src="{{movie.poster}}"/>
+    </div>
+    <div class="description-container">
+        <div id="title">
+            <h1>{{ movie.title}} ({{ movie.year}})</h1>
+        </div>
+        <div id="about">
+            <p>{{movie.plot}}</p>
+        </div>
+        <div class="box">
+            {% if added %}
+            <button class="btn btn-success"> Added to Watch Later </button>
+            {% else %}
+            <a href="{% url 'lab-10:add_watch_later' id %}" class="btn btn-warning"> Add to Watch Later </a>
+            {% endif%}
+        </div>
+    </div>
+    </div>
+</div>>
+{% endblock %}

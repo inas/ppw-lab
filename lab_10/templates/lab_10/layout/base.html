@@ -1,0 +1,75 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="description" content="LAB 10">
+ <meta name="author" content="{{author}}">
+   <!-- bootstrap csss -->
+
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="{% static 'css/lab_10.css' %}" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+ <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pirata+One"/>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+ <!-- Jquery n Bootstrap Script -->
+
+   <!-- font -->
+   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Monoton" />
+
+   <title>
+       {% block title %}Reputation Daily{% endblock %}
+   </title>
+   <style type="text/css">
+     html { 
+      background: url({% static 'image/purple.jpg' %}) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    body{
+      background: transparent; 
+    }
+   </style>
+   
+</head>
+<body>
+   <header>
+       {% include "lab_10/partials/header.html" %}
+   </header>
+   <content>
+           {% block content %}
+                 <!-- content goes here -->
+           {% endblock %}
+   </content>
+<footer>
+   <!-- TODO Block Footer dan include footer.html -->
+   {% block footer %}
+   {% include "lab_10/partials/footer.html" %}
+   {% endblock %}
+</footer>
+   <!-- Jquery n Bootstrap Script -->
+<!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="/js/jquery.dataTables.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+{% block javascript %}
+{% endblock %}
+</body>
+</html>

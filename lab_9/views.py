@@ -68,8 +68,6 @@ def profile(request):
     html = 'lab_9/session/profile.html'
     return render(request, html, response)
 
-# ======================================================================== #
-
 ### Drones
 def add_session_drones(request, id):
     ssn_key = request.session.keys()

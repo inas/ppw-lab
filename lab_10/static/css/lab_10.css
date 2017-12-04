@@ -1,0 +1,206 @@
+html, body {
+  min-height: 100%; 
+  background: url({% static 'image/purple.jpg' %}) !important;
+}
+
+html { 
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.7), 
+    rgba(0, 0, 0, 0.7)
+  ),url({% static 'image/news.jpg' %}) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body{
+  background: transparent;
+  padding-left: 1em;
+  padding-right: 1em; 
+}
+
+footer{
+  position: absolute;
+  bottom: 0;
+}
+
+#login-page > p {
+  font-family: "Open Sans";
+  font-size: 3em;
+  line-height: 0.8em;
+  text-align: center;
+  margin: auto;
+  margin-top: 16vh;
+  margin-bottom: 0.5em;
+  color: white;
+}
+
+#login-btn .btn{
+  font-family: Raleway;
+  font-size: 2em;
+  color: white;
+  background: transparent;
+  border: 3px solid white;
+  border-radius: 0;
+  width: 13em;
+  margin: auto;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+a {
+  color: white;
+}
+
+#login-btn .btn:hover {
+  cursor: pointer;
+  color: white;
+  border: 4.8px solid white;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+
+#login-btn .btn:hover >a {
+  color: white;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+
+@media only screen and (max-width: 375px){
+  #login-page > p {
+    margin-top: 10vh;
+  }
+}
+
+.form{
+  width: 400px;
+  height: 230px;
+  background: white;
+  margin: 0px auto;
+  padding-top: 20px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+input[type="text"], input[type="password"]{
+  display: block;
+  width: 309px;
+  height: 35px;
+  margin: 15px auto;
+  background: #fff;
+  border: 0px;
+  padding: 5px;
+  font-size: 16px;
+   border: 2px solid #fff;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus{
+  border: 2px solid #1abc9d
+}
+
+input[type="submit"]{
+  display: block;
+  background: linear-gradient(to right, #bc4e9c, #f80759);;
+  width: 314px;
+  padding: 12px;
+  cursor: pointer;
+  color: #fff;
+  border: 0px;
+  margin: auto;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover{
+  background: #09cca6
+}
+
+#details{
+  margin-top: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#details .poster {
+  width: auto;
+  margin-bottom: 1em;
+}
+
+#details .poster img{
+  max-width: 18em;
+}
+
+#details .description-container{
+  text-align: center;
+  width: 400px;
+  margin-left: 1em;
+  height: 373px;
+  background: white;
+  padding: 10px;
+}
+
+.flex{
+  grid-auto-rows: 1fr;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.flex-item{
+  width: 100%;
+  padding: 0 calc(100% * (1/8));
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+@media screen and (min-width: 768px){
+  .flex-item{
+  width: calc(100% * (1/4) - 10px - 1px);
+  padding: 0 15px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  }
+}
+
+#watch-later-poster{
+  width: calc(100%);
+}
+.watch-later-movies{
+  text-align: center;
+  background: #fff;
+  position: relative;
+  z-index: 15;
+  margin-bottom: 60px;
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+.watch-later-movies:after{
+    content:"";
+    display:block;
+    height:25px; /* Which is the padding of div.container */
+    background: #fff;
+}

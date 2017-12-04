@@ -1,0 +1,25 @@
+{% extends "lab_10/layout/base.html" %}
+
+{% block content %}
+<div class="flex">
+	{% if watch_later_movies %}
+		{% for movie in watch_later_movies %}
+		  	<div class="flex-item">
+		  		<div class="watch-later-movies">
+				  	<div>
+				  		<img id="watch-later-poster" src="{{movie.poster}}"/>
+				  	</div>
+				  	<div id="watch-later-title">
+				  		<h3>{{ movie.title}} ({{ movie.year}})</h3>
+				  	</div>
+				  	<a href='/lab-10/movie/detail/{{movie.imdbid}}' class='btn btn-primary'> Detail </a>
+			  	</div>
+		  	</div>
+		{% endfor %}
+	{% else %}
+	  <div class="alert alert-danger text-center">
+	      <strong>Oops!</strong> No movies added.
+	  </div>
+	{% endif %}
+</div>
+{% endblock %}

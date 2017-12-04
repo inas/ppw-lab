@@ -1,0 +1,16 @@
+{% extends "lab_10/layout/base.html" %}
+
+{% block content %}
+<div id="login-page">
+	<p>Browse movies?</p>
+
+	<div id="login-form">
+		<form class="form" action="{% url 'lab-10:auth_login' %}" method="POST">
+			{% csrf_token %}
+	        <input type="text" class="zocial-dribbble" placeholder="Enter your username" id="username" name="username" required/>
+	        <input type="password" placeholder="Password" id="password" name="password" required/>
+	        <input type="submit" value="Login with SSO" />
+        </form> 
+	</div> 
+</div>
+{% endblock %}
