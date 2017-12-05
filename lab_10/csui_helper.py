@@ -30,10 +30,10 @@ def verify_user(access_token):
     print ("response => ", response.json())
     return response.json()
 
-def get_data_user(access_token, id):
-    print ("#get data user => ", id)
-    parameters = {"access_token": access_token, "client_id": get_client_id()}
-    response = requests.get(API_MAHASISWA+id, params=parameters)
-    print ("response => ", response.text)
-    print ("response => ", response.json())
-    return response.json()
+# def get_data_user(access_token, id):
+#     print ("#get data user => ", id)
+#     parameters = {"access_token": access_token, "client_id": get_client_id()}
+#     response = requests.get(API_MAHASISWA+id, params=parameters)
+#     print ("response => ", response.text)
+#     print ("response => ", response.json())
+#     return response.json()
