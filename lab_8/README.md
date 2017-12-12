@@ -1,5 +1,7 @@
 # FB initiation function
 
+  merupakan function yang akan dijalankan pertamakali untuk menginisiasi api facebook.
+
 	  FB.init({
 	    appId      : '132368680796186',
 	    cookie     : true,
@@ -16,7 +18,7 @@
 	   fjs.parentNode.insertBefore(js, fjs);
 	 }(document, 'script', 'facebook-jssdk'));
 
-1. cek apakah user sudah login atau belum. render halaman.
+# cek apakah user sudah login atau belum. render halaman.
 
 	  FB.getLoginStatus(function(response) {
 	    console.log(response);
@@ -38,69 +40,99 @@
 	   });
 
 
-2. Cek status login
-	>>>Jika sudah login
-		      // Setelah merender tampilan di atas, dapatkan data home feed dari akun yang login
-      // dengan memanggil method getUserFeed yang kalian implementasi sendiri.
-      // Method itu harus menerima parameter berupa fungsi callback, dimana fungsi callback
-      // ini akan menerima parameter object feed yang merupakan response dari pemanggilan API Facebook
-      getUserFeed(feed => {
-        var counter = 0;
-        feed.data.map(value => {
-          // Render feed, kustomisasi sesuai kebutuhan.
-          
-          if (value.message && value.story) {
-            $('#timeline').append(
-              '<div class="feed">' +
-                '<div id="pp"> ' + 
-                  '<img class="picture" src="'   + user.picture.data.url + '" alt="profpic" />'+
-                '</div>' +
-                '<div class="fb-status">' +
-                  '<p id="id-status">' + user.name + '</p>' +
-                  '<p>' + value.message + '</p>' +
-                  '<p>' + value.story + '</p>' +
-                '</div>' +
-                '<div class="delete">' +
-                  '<img class="picture" onclick="deleteStatus(\''+ value.id + '\')" src="https://cdn4.iconfinder.com/data/icons/devine_icons/Black/PNG/Folder%20and%20Places/Trash-Recyclebin-Empty-Closed.png" alt="delete" />' +
-                '</div>' +
-              '</div>'
-            );
-          } else if (value.message) {
-            $('#timeline').append(
-                '<div class="feed">' +
-                  '<div id="pp"> ' + 
-                    '<img class="picture" src="'   + user.picture.data.url + '" alt="profpic" />'+
-                  '</div>' +
-                  '<div class="fb-status">' +
-                    '<p id="id-status">' + user.name + '</p>' +
-                    '<p>' + value.message + '</p>' +
-                  '</div>' +
-                  '<div class="delete">' +
-                    '<img onclick="deleteStatus(\''+ value.id + '\')" class="picture" src="https://cdn4.iconfinder.com/data/icons/devine_icons/Black/PNG/Folder%20and%20Places/Trash-Recyclebin-Empty-Closed.png" alt="delete" />' +
-                  '</div>' +
-                '</div>'
-            );
-          } else if (value.story) {
-            $('#timeline').append(
-                '<div class="feed">' +
-                  '<div id="pp"> ' + 
-                    '<img onclick="deleteStatus(\''+ value.id + '\')" class="picture" src="'   + user.picture.data.url + '" alt="profpic" />'+
-                  '</div>' +
-                  '<div class="fb-status">' +
-                    '<p id="id-status">' + user.name + '</p>' +
-                    '<p>' + value.story + '</p>' +
-                  '</div>' +
-                  '<div class="delete">' +
-                    '<img class="picture" src="https://cdn4.iconfinder.com/data/icons/devine_icons/Black/PNG/Folder%20and%20Places/Trash-Recyclebin-Empty-Closed.png" alt="delete" />' +
-                  '</div>' +
-                '</div>'
-            );
-            
-          }
-          counter+=1;
-        });
-        console.log(counter);
-        $("#get-status").append(
-          counter
-        );
+# Cek status login
+Jika sudah login maka akan menjalankan fungsi render dengan param true.	
+
+## Belum login
+Jika belum login maka akan dirender halaman yang mengharuskan user untuk login. Jika user mengklik button login, maka facebook akan melakukan autentikasi.
+
+    FB.login(function(response) {
+      if (response.authResponse) {
+       console.log('Welcome!  Fetching your information.... ');
+       FB.api('/me', function(response) {
+         console.log('Good to see you, ' + response.name + '.');
+         // render(true);
+         location.reload();
+       });
+      } else {
+       console.log('User cancelled login or did not fully authorize.');
+      }
+    }, {scope : 'public_profile,email,user_about_me,user_birthday,user_posts,publish_actions,user_friends'}, {auth_type : 'reauthenticate'}
+    );
+
+response.authResponse akan mengambil status login user. Jika berhasil login maka halaman akan di reload. Scope mendeskripsikan konten apa saja yang ingin diambil oleh user dari api.
+
+## Sudah login
+
+yang dilakukan oleh halaman adalah meload data user dan juga userfeed
+
+    // Method ini memodifikasi method getUserData di atas yang menerima fungsi callback bernama fun
+    // lalu merequest data user dari akun yang sedang login dengan semua fields yang dibutuhkan di 
+    // method render, dan memanggil fungsi callback tersebut setelah selesai melakukan request dan 
+    // meneruskan response yang didapat ke fungsi callback tersebut
+    // Apakah yang dimaksud dengan fungsi callback?
+    const getUserData = (fun) => {
+      // ...
+      FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+           FB.api('/me?fields=id,about,email,name,cover,picture,gender,birthday,location', 'GET', function(response) {
+            console.log('API response', response);
+            fun(response);
+            }
+          );
+        }
       });
+
+FB akan meminta response yang berisi status login. jika sudah benar terhubung maka akan diminta dari api FB id, email, dan data user lainnya yang akan disampaikan dalam respnse. setelah mendapatkan response maka akan dijalankan fungsi callback fun yang menjadi parameter fungsi. Fungsi fun tersebut ternyata akan meload halaman html yang menamilkan profile user. selain data profile, akan diminta juga feed user.
+
+    const getUserFeed = (fun) => {
+      // TODO: Implement Method Ini
+      // Pastikan method ini menerima parameter berupa fungsi callback, lalu merequest data Home Feed dari akun
+      // yang sedang login dengan semua fields yang dibutuhkan di method render, dan memanggil fungsi callback
+      // tersebut setelah selesai melakukan request dan meneruskan response yang didapat ke fungsi callback
+      // tersebut
+      FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') { 
+          FB.api('/me/feed', 'GET', function(response) {
+              console.log('API response', response);
+              fun(response);
+            }
+        );
+        }
+      });
+    };
+
+fungsi callback fun akan membuat elemen untuk tiap data yang didapatkan.
+
+     feed.data.map(value => {.............})
+
+
+### Post status
+terdapat form yang dapat mengsubmit isinya untuk dipost. saat tombol submit diklik maka akan dijalankan fungsi postStatus()
+
+    const postStatus = () => {
+      const message = $('#postInput').val();
+      postFeed(message);
+    };
+
+    const postFeed = (textmessage) => {
+      // Todo: Implement method ini,
+      // Pastikan method ini menerima parameter berupa string message dan melakukan Request POST ke Feed
+      // Melalui API Facebook dengan message yang diterima dari parameter.
+
+      FB.api('/me/feed', 'POST',  {"message": textmessage}, function(response)
+      {
+        console.log("test " + JSON.stringify(response));
+       if (!response || response.error)
+       {
+         console.log(response.error);
+         alert('Posting error occured');
+       }else{
+         alert('Success - Post ID: ' + response.id);
+         location.reload();
+       }
+      });
+          
+    };
+
+akan dijalankan protokol post yang akan menambahkan status. halaman akan direload agar perubahan dapat terlihat.
